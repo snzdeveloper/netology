@@ -37,8 +37,13 @@ WARN[0000] Using /home/vboxuser/centos-deb/compose.yaml
 <img src="https://raw.githubusercontent.com/snzdeveloper/netology/main/virtd-homeworks/05-virt-03-docker-intro/Untitled5.6.jpg" width="100%"/>
 
 7. Удалите любой из манифестов компоуза(например compose.yaml).  Выполните команду "docker compose up -d". Прочитайте warning, объясните суть предупреждения и выполните предложенное действие. Погасите compose-проект ОДНОЙ(обязательно!!) командой.
+
+
 WARN[0000] Found orphan containers ([centos-deb-portainer-1]) for this project. If you removed or renamed this service in your compose file, you can run this command with the --remove-orphans flag to clean it up.
-docker compose нашёл контейнер ([centos-deb-portainer-1]) в данном проекте, который не описан в compose, так как файл с его описанием был только что удлён.
+
+docker compose нашёл работающий контейнер ([centos-deb-portainer-1]) в данном проекте, который не описан в compose, так как файл с его описанием был только что удлён.
+
+<img src="https://raw.githubusercontent.com/snzdeveloper/netology/main/virtd-homeworks/05-virt-03-docker-intro/Untitled5.jpg" width="100%"/>
 
 ---
 
