@@ -8,9 +8,34 @@ terraform {
   required_version = ">=1.8.4" /*Многострочный комментарий.
  Требуемая версия terraform */
 }
-provider "docker" {}
-
+#provider "docker" {}
+provider "docker" {
+  host     = "ssh://user@89.169.178.92:22"
+  ssh_opts = ["-o", "StrictHostKeyChecking=no", "-o", "UserKnownHostsFile=/dev/null"]
+}
 #однострочный комментарий
+
+resource "yandex_compute_instance" "compute-vm" {
+  name        = "compute-vm-2-2-10-hdd-webapp"
+  hostname    = "netology-develop-platform-web-a"
+  platform_id = "standard-v3"
+
+  zone = "ru-central1-a" #Это очень важно  при создании ресурса в зоне отличной от Зоны по-умолчанию("ru-central1-a")! 
+
+  resources {
+    cores         = 2
+    memory        = 1
+    core_fraction = 20
+  }
+
+  boot_disk {
+    initialize_params {
+      image_id = data.yandex_compute_image.ubuntu-2204-lts.image_id
+      type     = "network-hdd"
+      size     = 10
+    }
+  }
+}
 
 resource "random_password" "random_string" {
   length      = 16
