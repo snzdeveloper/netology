@@ -35,6 +35,11 @@ resource "yandex_compute_instance" "compute-vm" {
       size     = 10
     }
   }
+
+  network_interface {
+    subnet_id = yandex_vpc_subnet.default.id
+    nat       = true
+  }
 }
 
 resource "random_password" "random_string" {

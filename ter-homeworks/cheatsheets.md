@@ -1,3 +1,6 @@
+# Yandex cloud
+## 
+### yc  
 ```sh
 yc resource-manager cloud list
 yc resource-manager folder list
@@ -10,5 +13,12 @@ yc resource-manager folder add-access-binding <folder-id> --role <editor> --subj
 
 yc compute image list --folder-id standard-images  --limit 0  --jq '.[].family' | sort | uniq
 
+
+```
+# Terraform  
+##  
+### for loop  
+```hcl
+# https://developer.hashicorp.com/terraform/language/expressions/for
 
 ```
