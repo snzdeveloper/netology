@@ -4,12 +4,6 @@ sources:
     keyserver: download.docker.com
     source: "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
 
-# groups:
-#   - docker
-
-# system_info:
-#   default_user:
-#     groups: [ docker ]
 
 users:
   - name: ubuntu

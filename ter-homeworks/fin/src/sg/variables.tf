@@ -72,13 +72,9 @@ variable "security_group_egress" {
 }
 
 
-variable "vpc_network" {
-  description = "secrules egress"
-  type = object({
-      id       = string
-  })
-  default = {
-    id = ""
-  }
+variable "network_id" {
+  description = "secureless egress"
+  type = string
+  default = ""
 }
 
