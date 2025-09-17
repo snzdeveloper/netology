@@ -2,20 +2,18 @@
 # создаем подсеть
 module "vpc_develop" {
   source = "./vpc"
-  #name = "develop"
-  name           = "develop"
-  zone           = "ru-central1-a"
-  v4_cidr_blocks = ["10.0.1.0/24"]
+  name           = var.vpc_name
+  zone           = var.default_zone
+  v4_cidr_blocks = var.default_cidr
 }
 
+# создаем группы безопасности для фильтрации трафика
 module "vpc_sg" {
   source = "./sg"
-  #name = "develop"
+  name          = "develop-sg"
   cloud_id      = var.cloud_id
   folder_id     = var.folder_id
-  vpc_network = {
-    id = module.vpc_develop.vpc_network.id
-  }
+  network_id    = module.vpc_develop.vpc_network.id
 
   security_group_ingress = [
     {
@@ -52,19 +50,7 @@ module "vpc_sg" {
   ]
 }
 
-# module "vms_develop" {
-#   source = "./vms"
-#   #name = "develop"
-#   public_key    = local.metadata.ssh-keys
-#   cloud_id      = var.cloud_id
-#   folder_id     = var.folder_id
-#   default_zone  = var.default_zone
-#   ssh-authorized-keys = ["~/.ssh/id_ed25519.pub"]
-
-#   vpc_network = module.vpc_develop.vpc_network
-#   vpc_subnet = module.vpc_develop.vpc_subnet
-# }
-
+# формируем cloud-init
 module "cloudinit" {
   source = "./cloud-init"
   ssh-authorized-keys = ["~/.ssh/id_ed25519.pub","~/.ssh/id_ed25519-wsl.pub"]
@@ -97,7 +83,7 @@ resource "yandex_compute_instance" "db" {
 
   //metadata = local.metadata
   metadata = {
-    user-data          = module.cloudinit.rendered
+    user-data          = module.cloudinit.content
     serial-port-enable = 1
   }
 
@@ -126,7 +112,6 @@ resource "yandex_compute_instance" "db" {
       "docker run -d --env-file /home/ubuntu/web.env -p 3306:3306 --name mysql1 mariadb:10.6.4-focal"
      ]
   }  
-  #docker run -d -e MYSQL_ROOT_PASSWORD="YtReWq4321" -e MYSQL_DATABASE="virtd" -e MYSQL_USER="app" -e MYSQL_PASSWORD="QwErTy1234" -e MYSQL_ROOT_HOST="%" -p 3306:3306 -v mariadb_data:/var/lib/mysql --name mysql cr.yandex/crp6lq6m05qvpikv5fuc/mariadb:webdb
 }
 
 resource "yandex_compute_instance" "web" {
@@ -154,7 +139,7 @@ resource "yandex_compute_instance" "web" {
 
   //metadata = local.metadata
   metadata = {
-    user-data          = module.cloudinit.rendered
+    user-data          = module.cloudinit.content
     serial-port-enable = 1
   }
 

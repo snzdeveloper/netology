@@ -1,7 +1,7 @@
 
 resource "yandex_vpc_security_group" "sg" {
   name       = var.name
-  network_id = var.vpc_network.id
+  network_id = var.network_id
   folder_id  = var.folder_id
 
   dynamic "ingress" {
