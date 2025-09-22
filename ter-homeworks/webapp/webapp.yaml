@@ -1,0 +1,45 @@
+#version: "3"
+# The parser will ignore extension fields prefixed with x-
+x-deploy: &deploy-dev
+  deploy:
+    resources:
+      limits:
+        cpus: "1"
+        memory: 512M
+      reservations:
+        memory: 256M
+x-env_file: &env_file
+  env_file:
+    - .env
+x-restart: &restart
+  restart: always #no, on-failure , always(default), unless-stopped 
+
+include:
+  #- path: ../mysql/mysql.yaml
+  #  project_directory: ./mysql
+  - path: ./proxy.yaml
+    project_directory: .
+     
+services:
+  web:
+    image: cr.yandex/crp6lq6m05qvpikv5fuc/python-web:latest
+    environment:
+      - DB_NAME=${MYSQL_DATABASE}
+      - DB_USER=${MYSQL_USER}
+      - DB_PASSWORD=${MYSQL_PASSWORD}
+      - DB_HOST=${MYSQL_HOST}
+      #- DB_TABLE=${MYSQL_TABLE_NAME:-requests}
+    depends_on: ["ingress-proxy", "reverse-proxy"]
+    #ports: ["80:80"]
+    #networks: ["backend"]
+    networks:
+      backend:
+        ipv4_address: 172.20.0.5
+
+networks:
+  backend:
+    driver: bridge
+    ipam:
+     config:
+       - subnet: 172.20.0.0/24
+

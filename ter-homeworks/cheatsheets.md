@@ -38,6 +38,9 @@ docker tag ubuntu cr.yandex/<идентификатор_реестра>/ubuntu:h
 yc iam service-account list
 yc iam service-account create --name sa-terraform
 
+yc resource-manager folder add-access-binding b1g66aah472mb1u75kr7 --role ydb.admin --subject serviceAccount:ajegsep6pi9agjsf67uu
+yc resource-manager folder add-access-binding b1g66aah472mb1u75kr7 --role storage.editor --subject serviceAccount:ajegsep6pi9agjsf67uu
+
 # https://yandex.cloud/ru/docs/iam/concepts/authorization/#sa
 # Как выбрать подходящий способ аутентификации в Yandex Cloud
 
@@ -45,9 +48,6 @@ yc iam service-account create --name sa-terraform
 # Создать авторизованный ключ
 yc iam key create  --service-account-name sa-terraform --folder-name default --output ~/.sa-terraform-key.json
 yc iam key list --service-account-name=sa-terraform
-
-yc resource-manager folder add-access-binding b1g66aah472mb1u75kr7 --role ydb.admin --subject serviceAccount:ajegsep6pi9agjsf67uu
-yc resource-manager folder add-access-binding b1g66aah472mb1u75kr7 --role storage.editor --subject serviceAccount:ajegsep6pi9agjsf67uu
 
 # https://yandex.cloud/ru/docs/iam/operations/authentication/manage-access-keys#cli_1
 # Статические ключи доступа, совместимые с AWS API
