@@ -1,6 +1,6 @@
 ---
   - name: Print os facts
-    hosts: all
+    hosts: inside
     tasks:
       - name: Print OS
         debug:
@@ -8,3 +8,14 @@
       - name: Print fact
         debug:
           msg: "{{ some_fact }}"
+  - name: Print deb facts
+    hosts: deb
+    tasks:
+      - name: Print OS
+        debug:
+          msg: "{{ ansible_distribution }}"
+      - name: Print fact
+        debug:
+          msg: "{{ some_fact }}"
+
+

@@ -1,5 +1,15 @@
 ---
-  inside:
+  inside:                           # группа хостов
     hosts:
-      localhost:
+      localhost:                    # список хостов
+        ansible_connection: local
+      host1:
+        ansible_connection: local
+  deb:
+    hosts:
+      host:
+        
+  el:
+    hosts:
+      local-host:
         ansible_connection: local
