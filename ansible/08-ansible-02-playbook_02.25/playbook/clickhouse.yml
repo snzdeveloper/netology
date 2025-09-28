@@ -1,0 +1,59 @@
+---
+- name: Install Clickhouse
+  hosts: clickhouse
+  environment: 
+    - "{{ proxy_settings }}"
+
+  handlers:
+
+    - name: Start ClickHouse
+      service:
+        name: clickhouse-server
+        state: started
+        enabled: yes
+        pattern: /usr/bin/clickhouse-server
+
+    - name: Restart ClickHouse
+      service:
+        name: clickhouse-server
+        state: restarted
+
+  tasks:
+    - name: Run a command with a specific environment variable if defined
+      ansible.builtin.shell: echo "My secret is $MY_SECRET"
+      environment:
+        MY_SECRET: "{{ proxy_settings }}"
+
+    - name: Import a key from a url
+      ansible.builtin.rpm_key:
+        state: present
+        key: https://packages.clickhouse.com/rpm/stable/repodata/repomd.xml.key
+      become: true
+
+    - name: Add ClickHouse repository
+      ansible.builtin.get_url:
+        url: "https://packages.clickhouse.com/rpm/clickhouse.repo"
+        dest: "/etc/yum.repos.d/clickhouse_repos.repo"
+      become: true
+
+    - name: Install ClickHouse packages
+      ansible.builtin.dnf:
+        name: "{{ item }} = {{ clickhouse_version }}"
+        state: present
+        update_cache: yes
+        #cache_valid_time: 84600
+      with_items:
+        - "{{ clickhouse_packages }}"
+      notify:
+        - Start ClickHouse
+        - Restart ClickHouse
+      become: true
+    
+    - name: Flush handlers
+      meta: flush_handlers
+    
+    - name: Create database
+      ansible.builtin.command: "clickhouse-client -q 'create database logs;'"
+      register: create_db
+      failed_when: create_db.rc != 0 and create_db.rc !=82
+      changed_when: create_db.rc == 0

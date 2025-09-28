@@ -1,0 +1,5 @@
+---
+proxy_settings: "{{ ({'http_proxy':\"http://{}:3128\".format(proxy_host)}) if proxy_host is defined else ({}) }}"
+  # http_proxy:  "http://{{ proxy_host }}:3128"
+  # https_proxy: "http://{{ proxy_host }}:3128"
+
