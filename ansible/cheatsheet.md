@@ -19,3 +19,5 @@ ssh-copy-id -i /home/vboxuser/.ssh/id_ed25519 -p 222 jumpuser@46.45.0.0
 # скопировать ключ на целевой хост
 ssh-copy-id -i /home/vboxuser/.ssh/id_ed25519 -o StrictHostKeyChecking=no -o ProxyCommand="ssh -W %h:%p -q 46.45.0.0 -p 222 -i /home/vboxuser/.ssh/id_ed25519 -l jumpuser" user@10.1.200.3
 
+ansible-playbook -i inventory/prod.yml ssh.yml -k
+ansible-playbook -i inventory/prod.yml clickhouse.yml --extra-vars "proxy_host=46.45.53.9 ansible_become_pass=qwe"

@@ -1,0 +1,9 @@
+---
+ proxy_settings:
+  "{{ (
+    {\"http_proxy\": \"http://{}:3128\".format(proxy_host),
+     \"https_proxy\": \"http://{}:3128\".format(proxy_host)}
+  ) if proxy_host is defined else ({}) }}"
+# proxy_env:
+#    http_proxy:  "http://{{ proxy_host }}:3128"
+#    https_proxy: "http://{{ proxy_host }}:3128"
