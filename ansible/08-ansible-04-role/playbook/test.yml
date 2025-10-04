@@ -1,0 +1,7 @@
+---
+- name: Print os facts
+  hosts: clickhouse
+  tasks:
+    - name: Print OS
+      ansible.builtin.debug:
+        msg: "{{ ansible_distribution }}"
