@@ -4,7 +4,6 @@
   roles:
     - clickhouse
 
-
 - name: Install Vector
   hosts: vector
   roles:
@@ -13,6 +12,6 @@
     vector_version: "0.50.0"
 
 - name: Install LightHouse
-  hosts: vector
+  hosts: clickhouse
   roles:
     - lighthouse
