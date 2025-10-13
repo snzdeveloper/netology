@@ -1,0 +1,21 @@
+---
+- name: Remove proxy setting from dnf
+  ansible.builtin.lineinfile:
+    path: /etc/dnf/dnf.conf
+    regexp: '^({{ item }})$'  # Matches the exact line
+    line: '# \1'              # Prepends a '#' to the line
+    backrefs: yes             # Required for using backreferences (item in this case)
+  loop:
+    - "proxy=http.*"
+  when: proxy_host is not defined
+
+- name: Add proxy setting for dnf
+  ansible.builtin.lineinfile:
+    path: /etc/dnf/dnf.conf
+    regexp: '^({{ item }})$'  # Matches the exact line
+    line: '# \1'              # Prepends a '#' to the line
+    backrefs: yes             # Required for using backreferences (item in this case)
+    create: yes
+  loop:
+    - "proxy=http.*"
+  when: proxy_host is defined

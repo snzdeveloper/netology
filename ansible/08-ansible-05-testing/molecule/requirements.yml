@@ -1,0 +1,5 @@
+---
+- src: https://github.com/snzdeveloper/ansible-role-vector.git
+  scm: git
+  version: master
+  name: vector

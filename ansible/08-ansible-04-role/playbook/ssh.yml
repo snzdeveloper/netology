@@ -9,12 +9,11 @@
         state: present
         key: "{{ lookup('file', '/home/' + lookup('env', 'USER') + '/.ssh/id_ed25519.pub') }}"
 
-    - name: Comment out multiple lines using lineinfile
+    # NOTE: Fully quoted because of the ': ' on the line. See the Gotchas in the YAML docs.
+    - name: Validate the sudoers file before saving
       ansible.builtin.lineinfile:
-        path: /etc/dnf/dnf.conf
-        regexp: '^({{ item }})$'  # Matches the exact line
-        line: '# \1'              # Prepends a '#' to the line
-        backrefs: yes             # Required for using backreferences (item in this case)
-      loop:
-        - "proxy=http.*"
-      when: proxy_host is not defined
+        path: /etc/sudoers
+        state: present
+        regexp: '^%ADMIN ALL='
+        line: '%ADMIN ALL=(ALL) NOPASSWD: ALL'
+        validate: /usr/sbin/visudo -cf %s        

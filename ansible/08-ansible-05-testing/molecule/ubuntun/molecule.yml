@@ -1,0 +1,103 @@
+---
+# Dependency management (download roles/collections)
+dependency:
+  name: galaxy
+  options:
+    ignore-certs: false
+    ignore-errors: false
+  #   role-file: requirements.yml
+  #   requirements-file: requirements.yml
+
+prerun: false
+
+driver:
+  name: docker
+  options:
+    D: true
+    vvv: true
+
+lint: |
+  yamllint .
+  ansible-lint .
+
+platforms:
+  - name: ubuntu24
+    image: molecule_local/ubuntu
+    #dockerfile: ../resources/Dockerfile.j2
+    pre_build_image: true
+    #command: /bin/bash
+    privileged: true
+    capabilities:
+      - SYS_ADMIN
+    tmpfs:
+      - /run
+      - /tmp
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup
+    env:
+      ANSIBLE_USER: ubuntu
+      SUDO_GROUP: sudo
+      DEPLOY_GROUP: deployer
+      container: docker
+
+  # - name: centos8
+  #   image: docker.io/pycontribs/centos:8
+  #   pre_build_image: true
+  
+  # - name: centos7
+  #   image: docker.io/pycontribs/centos:7
+  #   pre_build_image: true
+
+provisioner:
+  name: ansible
+  env:
+    ANSIBLE_ROLES_PATH: "../../roles"
+
+ansible:
+  cfg:
+    defaults:
+      host_key_checking: false
+      verbosity: 3
+      remote_tmp: /tmp/.ansible
+    ssh_connection:
+      pipelining: true
+  env:
+    ANSIBLE_FORCE_COLOR: "1"
+    ANSIBLE_LOAD_CALLBACK_PLUGINS: "1"
+
+  executor:
+    backend: ansible-playbook
+    args:
+      ansible_playbook:
+        - --diff
+        - --force-handlers
+#        - --inventory=../../../../inventory/prod.yml
+      ansible_navigator:
+        - --mode stdout
+        - --pull-policy missing
+#        - --execution-environment-image aragast/netology:latest
+
+#   playbooks:
+#     create: create.yml
+#     converge: converge.yml
+#     destroy: destroy.yml
+#     cleanup: cleanup.yml
+#     prepare: prepare.yml
+#     side_effect: side_effect.yml
+#     verify: verify.yml
+
+scenario:
+  name: ubuntun
+  test_sequence:
+    - dependency
+#     - cleanup
+#     - destroy
+#     - syntax
+    - create
+    - prepare
+    - converge
+#     - idempotence
+#     - side_effect
+#    - verify
+#     - cleanup
+    - destroy
