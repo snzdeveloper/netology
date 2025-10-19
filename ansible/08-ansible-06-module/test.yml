@@ -4,5 +4,8 @@
   tasks:
     - name: Ctreate file
       copylite:
-        content: "test text"
-        dest: /tmp/ttt1.txt
+        content: "{{ content }}"
+        dest: "{{ file }}"
+  vars:
+    file: /tmp/ttt1.txt
+    content: "test text"

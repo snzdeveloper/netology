@@ -161,11 +161,70 @@ if __name__ == '__main__':
 **Шаг 3.** Заполните файл в соответствии с требованиями Ansible так, чтобы он выполнял основную задачу: module должен создавать текстовый файл на удалённом хосте по пути, определённом в параметре `path`, с содержимым, определённым в параметре `content`.
 
 **Шаг 4.** Проверьте module на исполняемость локально.
+```sh
+(pip) vboxuser@ubuntu:~/netology.git/ansible/08-ansible-06-module$ ANSIBLE_LIBRARY=./library ansible -m copylite.py -a "dest='/tmp/ttta.txt' content='test qwerty333'" localhost
+localhost | CHANGED => {
+    "changed": true,
+    "dest": "/tmp/ttta.txt",
+    "gid": 1000,
+    "group": "vboxuser",
+    "mode": "0664",
+    "owner": "vboxuser",
+    "size": 14,
+    "state": "file",
+    "uid": 1000
+}
+(pip) vboxuser@ubuntu:~/netology.git/ansible/08-ansible-06-module$ ANSIBLE_LIBRARY=./library ansible -m copylite.py -a "dest='/tmp/ttta.txt' content='test qwerty333'" localhost
+localhost | SUCCESS => {
+    "changed": false,
+    "dest": "/tmp/ttta.txt",
+    "gid": 1000,
+    "group": "vboxuser",
+    "mode": "0664",
+    "owner": "vboxuser",
+    "size": 14,
+    "state": "file",
+    "uid": 1000
+}
+(pip) vboxuser@ubuntu:~/netology.git/ansible/08-ansible-06-module$
+```
 
 **Шаг 5.** Напишите single task playbook и используйте module в нём.
 
 **Шаг 6.** Проверьте через playbook на идемпотентность.
+```sh
+(pip) vboxuser@ubuntu:~/netology.git/ansible/08-ansible-06-module$ ansible-playbook -v test.yml
+Using /home/vboxuser/.ansible.cfg as config file
+[WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
 
+PLAY [Ctreate file custom module test] *************************************************************************************************************************************************************************************
+
+TASK [Gathering Facts] *****************************************************************************************************************************************************************************************************
+ok: [localhost]
+
+TASK [Ctreate file] ********************************************************************************************************************************************************************************************************
+changed: [localhost] => {"changed": true, "dest": "/tmp/ttta.txt", "gid": 1000, "group": "vboxuser", "mode": "0664", "owner": "vboxuser", "size": 9, "state": "file", "uid": 1000}
+
+PLAY RECAP *****************************************************************************************************************************************************************************************************************
+localhost                  : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+
+(pip) vboxuser@ubuntu:~/netology.git/ansible/08-ansible-06-module$ ansible-playbook -v test.yml
+Using /home/vboxuser/.ansible.cfg as config file
+[WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
+
+PLAY [Ctreate file custom module test] *************************************************************************************************************************************************************************************
+
+TASK [Gathering Facts] *****************************************************************************************************************************************************************************************************
+ok: [localhost]
+
+TASK [Ctreate file] ********************************************************************************************************************************************************************************************************
+ok: [localhost] => {"changed": false, "dest": "/tmp/ttta.txt", "gid": 1000, "group": "vboxuser", "mode": "0664", "owner": "vboxuser", "size": 9, "state": "file", "uid": 1000}
+
+PLAY RECAP *****************************************************************************************************************************************************************************************************************
+localhost                  : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+
+(pip) vboxuser@ubuntu:~/netology.git/ansible/08-ansible-06-module$
+```
 **Шаг 7.** Выйдите из виртуального окружения.
 
 **Шаг 8.** Инициализируйте новую collection: `ansible-galaxy collection init my_own_namespace.yandex_cloud_elk`.
@@ -183,9 +242,34 @@ if __name__ == '__main__':
 **Шаг 14.** Создайте ещё одну директорию любого наименования, перенесите туда single task playbook и архив c collection.
 
 **Шаг 15.** Установите collection из локального архива: `ansible-galaxy collection install <archivename>.tar.gz`.
+```sh
+(pip) vboxuser@ubuntu:~/netology.git/ansible/08-ansible-06-module$ ansible-galaxy collection install snzdeveloper-base-1.0.0.tar.gz
+Starting galaxy collection install process
+Process install dependency map
+Starting collection install process
+Installing 'snzdeveloper.base:1.0.0' to '/home/vboxuser/.ansible/collections/ansible_collections/snzdeveloper/base'
+snzdeveloper.base:1.0.0 was installed successfully
+```
 
 **Шаг 16.** Запустите playbook, убедитесь, что он работает.
 
+```sh
+(pip) vboxuser@ubuntu:~/netology.git/ansible/08-ansible-06-module$ ansible-playbook -v role.yml
+Using /home/vboxuser/.ansible.cfg as config file
+[WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
+
+PLAY [Test copylite] *******************************************************************************************************************************************************************************************************
+
+TASK [Gathering Facts] *****************************************************************************************************************************************************************************************************
+ok: [localhost]
+
+TASK [snzdeveloper.base.copylite : Create file task] ***********************************************************************************************************************************************************************
+ok: [localhost] => {"changed": false, "dest": "/tmp/ttt.txt", "gid": 1000, "group": "vboxuser", "mode": "0664", "owner": "vboxuser", "size": 7, "state": "file", "uid": 1000}
+
+PLAY RECAP *****************************************************************************************************************************************************************************************************************
+localhost                  : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+
+```
 **Шаг 17.** В ответ необходимо прислать ссылки на collection и tar.gz архив, а также скриншоты выполнения пунктов 4, 6, 15 и 16.
 
 ## Необязательная часть
