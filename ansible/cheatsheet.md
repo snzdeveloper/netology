@@ -89,10 +89,12 @@ sudo apt install build-essential libssl-dev libffi-dev python-dev-is-python3
 #https://stackoverflow.com/questions/76351518/tox-skipped-because-could-not-find-python-interpreter
 #https://github.com/pyenv/pyenv?tab=readme-ov-file
 
-
-
 ######https://www.endpointdev.com/blog/2025/03/testing-ansible-with-molecule/
 ######https://github.com/antmelekhin/docker-systemd/blob/main/README.md
+
+###### https://stackoverflow.com/questions/78990297/ansible-yum-throwing-future-feature-annotations-is-not-defined
+###### ansible-galaxy collection install community.docker --upgrade
+
 
 ###### docker-podman-systemd
 ######https://habr.com/ru/companies/redhatrussia/articles/468931/
