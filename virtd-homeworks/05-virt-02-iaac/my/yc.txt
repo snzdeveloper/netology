@@ -1,0 +1,10 @@
+# https://yandex.cloud/ru/docs/cli/quickstart
+# https://yandex.cloud/ru/docs/tutorials/infrastructure-management/packer-quickstart
+
+yc vpc network create --name my-yc-network --labels my-label=my-value --description "my first network via yc"
+yc vpc subnet create --name my-yc-subnet-b --zone ru-central1-b --range 10.1.2.0/24 --network-name my-yc-network --description "my first subnet via yc"
+yc vpc network list
+
+
+#cat /etc/apt/sources.list | awk '/-backports/{ gsub(/mirror.yandex.ru/, "ftp.debian.org"); print } !/-backports/'
+cat /etc/apt/sources.list | awk '/-backports/{ print "#" $0 } !/-backports/'

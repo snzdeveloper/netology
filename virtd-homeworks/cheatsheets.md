@@ -1,1 +1,2 @@
 # https://github.com/docker/awesome-compose/tree/master
+wget -q -O - "https://hub.docker.com/v2/namespaces/library/repositories/${debian}/tags?page_size=100" | grep -o '"name": *"[^"]*' | grep -o '[^"]*$'
