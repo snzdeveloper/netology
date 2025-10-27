@@ -1,0 +1,37 @@
+#cloud-config
+sources:
+  docker.list:
+    keyserver: download.docker.com
+    source: "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+
+
+users:
+  - name: ubuntu
+    groups: [ sudo, docker ]
+    shell: /bin/bash
+    sudo: ["ALL=(ALL) NOPASSWD:ALL"]
+    ssh_authorized_keys:
+%{ for i in ssh_keys ~}
+      - ${i}
+%{~ endfor ~}
+package_update: true
+package_upgrade: false
+packages:
+  - apt-transport-https
+  - ca-certificates
+  - curl
+  - gnupg
+  - lsb-release
+  - unattended-upgrades
+  - mc
+  - vim
+%{ for i in packages ~}
+  - ${i}
+%{endfor ~}
+runcmd:
+%{ for i in runcmds ~}
+  - ${i}
+%{endfor ~}
+
+final_message: "The system is finally up, after $UPTIME seconds"
+
