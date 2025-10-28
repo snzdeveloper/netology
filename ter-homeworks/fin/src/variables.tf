@@ -31,22 +31,3 @@ variable "vpc_name" {
   description = "VPC network&subnet name"
 }
 
-variable "ssh_key_file" {
-  type        = string
-  default     = "ubuntu: "
-  description = "ssh key file"
-}
-
-variable "each_db" {
-  type = list(object({  
-    name=string
-    cpu=number
-    ram=number
-    core_fraction=number
-    disk_volume=optional(number)
-    hdd_size=number
-    hdd_type=string
-  }))
-
-  default = []
-}

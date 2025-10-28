@@ -25,25 +25,5 @@ locals {
         }
 
     }
-
-  environment_configs = {
-    development = {
-      location    = "East US"
-      instance_type = "t2.micro"
-      min_instances = 1
-    }
-    staging = {
-      location    = "West US"
-      instance_type = "t2.small"
-      min_instances = 2
-    }
-    production = {
-      location    = "Central US"
-      instance_type = "m5.large"
-      min_instances = 3
-    }
-  }
-
-
 }
 
