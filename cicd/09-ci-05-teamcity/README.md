@@ -30,7 +30,10 @@
 
 <img src="https://github.com/snzdeveloper/netology/blob/res/cicd/09-ci-05-teamcity/Screenshot_04.jpg" width="100%"/>
 
-8. Мигрируйте `build configuration` в репозиторий.
+8. Мигрируйте `build configuration` в репозиторий.  
+
+<img src="https://github.com/snzdeveloper/netology/blob/res/cicd/09-ci-05-teamcity/Screenshot_08.jpg" width="100%"/>
+
 9. Создайте отдельную ветку `feature/add_reply` в репозитории.
 10. Напишите новый метод для класса Welcomer: метод должен возвращать произвольную реплику, содержащую слово `hunter`.
 11. Дополните тест для нового метода на поиск слова `hunter` в новой реплике.
@@ -42,6 +45,9 @@
 14. Внесите изменения из произвольной ветки `feature/add_reply` в `master` через `Merge`.
 15. Убедитесь, что нет собранного артефакта в сборке по ветке `master`.
 16. Настройте конфигурацию так, чтобы она собирала `.jar` в артефакты сборки.
+
+<img src="https://github.com/snzdeveloper/netology/blob/res/cicd/09-ci-05-teamcity/Screenshot_08.1.jpg" width="100%"/>
+
 17. Проведите повторную сборку мастера, убедитесь, что сбора прошла успешно и артефакты собраны.
 
 <img src="https://github.com/snzdeveloper/netology/blob/res/cicd/09-ci-05-teamcity/Screenshot_07.1.jpg" width="100%"/>
