@@ -12,4 +12,5 @@ docker run --rm -d --name teamcity-server-instance  \
     jetbrains/teamcity-server
 
 
-https://github.com/dcjulian29/ansible-role-teamcity/tree/main
+#https://github.com/dcjulian29/ansible-role-teamcity/tree/main
+#https://github.com/matisku/ansible-teamcity-server/tree/master

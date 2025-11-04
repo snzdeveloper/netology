@@ -19,7 +19,7 @@ docker run \
   docker:dind \
   --storage-driver overlay2
 
-docker build -f my‑jenkins -t jenkins-blueocean:2.491 .
+docker build -f my-jenkins -t jenkins-blueocean:2.491 .
 
 docker run \
   --name jenkins-blueocean \

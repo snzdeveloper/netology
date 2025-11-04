@@ -1,0 +1,175 @@
+diff --git a/.env-latest b/.env-latest
+index f459b9d..b05eba8 100644
+--- a/.env-latest
++++ b/.env-latest
+@@ -3,3 +3,4 @@ export INFLUXDB_TAG=1.8
+ export CHRONOGRAF_TAG=latest
+ export KAPACITOR_TAG=latest
+ export TYPE=latest
++export GID=$(stat -c '%g' /var/run/docker.sock)
+diff --git a/docker-compose.yml b/docker-compose.yml
+index 016a6c6..dfd7ce6 100644
+--- a/docker-compose.yml
++++ b/docker-compose.yml
+@@ -38,6 +38,10 @@ services:
+       - ./telegraf/:/etc/telegraf/
+       # Mount for Docker API access
+       - /var/run/docker.sock:/var/run/docker.sock
++    #https://github.com/influxdata/telegraf/issues/10031#issuecomment-955043429
++    user: telegraf
++    group_add:
++      - $GID #docker - added in .env-latest
+     depends_on:
+       - influxdb
+ 
+diff --git a/sandbox b/sandbox
+index 83f3745..ce45a05 100755
+--- a/sandbox
++++ b/sandbox
+@@ -7,8 +7,8 @@ if ! [ -x "$(command -v docker)" ]; then
+   exit 1
+ fi
+ 
+-if ! [ -x "$(command -v docker-compose)" ]; then
+-  echo 'Error: docker-compose is not installed.' >&2
++if ! [ -x "$(command -v docker compose)" ]; then
++  echo 'Error: docker compose is not installed.' >&2
+   exit 1
+ fi
+ 
+@@ -19,9 +19,9 @@ sandbox () {
+         # If nightly images already exist, containers are stopped, destroyed,
+         # and rebuilt using newly pulled images
+         if [ $(docker images | grep nightly | tr -s ' ' | cut -d ' ' -f 3 | wc -l) -gt 0 ]; then
+-          docker-compose down
+-          docker-compose rm -f
+-          docker-compose build --pull
++          docker compose down
++          docker compose rm -f
++          docker compose build --pull
+         fi
+       else
+         source .env-latest
+@@ -32,19 +32,19 @@ sandbox () {
+     case $2 in
+       influxdb)
+         echo "Entering /bin/bash session in the influxdb container..."
+-        docker-compose exec influxdb /bin/bash
++        docker compose exec influxdb /bin/bash
+         ;;
+       chronograf)
+         echo "Entering /bin/sh session in the chronograf container..."
+-        docker-compose exec chronograf /bin/sh
++        docker compose exec chronograf /bin/sh
+         ;;
+       kapacitor)
+         echo "Entering /bin/bash session in the kapacitor container..."
+-        docker-compose exec kapacitor /bin/bash
++        docker compose exec kapacitor /bin/bash
+         ;;
+       telegraf)
+         echo "Entering /bin/bash session in the telegraf container..."
+-        docker-compose exec telegraf /bin/bash
++        docker compose exec telegraf /bin/bash
+         ;;
+       *)
+         echo "sandbox enter (influxdb||chronograf||kapacitor||telegraf)"
+@@ -57,19 +57,19 @@ sandbox () {
+     case $2 in
+       influxdb)
+         echo "Following the logs from the influxdb container..."
+-        docker-compose logs -f influxdb
++        docker compose logs -f influxdb
+         ;;
+       chronograf)
+         echo "Following the logs from the chronograf container..."
+-        docker-compose logs -f chronograf
++        docker compose logs -f chronograf
+         ;;
+       kapacitor)
+         echo "Following the logs from the kapacitor container..."
+-        docker-compose logs -f kapacitor
++        docker compose logs -f kapacitor
+         ;;
+       telegraf)
+         echo "Following the logs from the telegraf container..."
+-        docker-compose logs -f telegraf
++        docker compose logs -f telegraf
+         ;;
+       *)
+         echo "sandbox logs (influxdb||chronograf||kapacitor||telegraf)"
+@@ -81,7 +81,7 @@ sandbox () {
+     up)
+       echo "Spinning up Docker Images..."
+       echo "If this is your first time starting sandbox this might take a minute..."
+-      docker-compose up -d --build
++      docker compose up -d --build
+       echo "Opening tabs in browser..."
+       sleep 3
+       if [ $(uname) == "Darwin" ]; then
+@@ -96,13 +96,13 @@ sandbox () {
+       ;;
+     down)
+       echo "Stopping sandbox containers..."
+-      docker-compose down
++      docker compose down
+       ;;
+     restart)
+       echo "Stopping all sandbox processes..."
+-      docker-compose down > /dev/null 2>&1
++      docker compose down > /dev/null 2>&1
+       echo "Starting all sandbox processes..."
+-      docker-compose up -d --build > /dev/null 2>&1
++      docker compose up -d --build > /dev/null 2>&1
+       echo "Services available!"
+       ;;
+     delete-data)
+@@ -111,25 +111,25 @@ sandbox () {
+       ;;
+     docker-clean)
+       echo "Stopping and removing running sandbox containers..."
+-      docker-compose down
++      docker compose down
+       echo "Removing TICK images..."
+       docker rmi sandbox_documentation influxdb:latest telegraf:latest kapacitor:latest chronograf:latest chrono_config:latest quay.io/influxdb/influxdb:nightly quay.io/influxdb/chronograf:nightly> /dev/null 2>&1
+       docker rmi $(docker images -f "dangling=true" -q)
+       ;;
+     influxdb)
+       echo "Entering the influx cli..."
+-      docker-compose exec influxdb /usr/bin/influx
++      docker compose exec influxdb /usr/bin/influx
+       ;;
+     flux)
+       echo "Entering the flux repl..."
+-      docker-compose exec influxdb /usr/bin/influx -type flux
++      docker compose exec influxdb /usr/bin/influx -type flux
+       ;;
+     rebuild-docs)
+       echo "Rebuilding documentation container..."
+       docker build -t sandbox_documentation documentation/ > /dev/null 2>&1
+       echo "Restarting..."
+-      docker-compose down > /dev/null 2>&1
+-      docker-compose up -d --build > /dev/null 2>&1
++      docker compose down > /dev/null 2>&1
++      docker compose up -d --build > /dev/null 2>&1
+       ;;
+     enter)
+       enter $@
+diff --git a/telegraf/telegraf.conf b/telegraf/telegraf.conf
+index 2929a43..a0ecc07 100644
+--- a/telegraf/telegraf.conf
++++ b/telegraf/telegraf.conf
+@@ -24,10 +24,10 @@
+ 
+ [[inputs.docker]]
+   endpoint = "unix:///var/run/docker.sock"
+-  container_names = []
++  #container_names = []
+   timeout = "5s"
+-  perdevice = true
+-  total = false
++  #perdevice = true
++  #total = false
+   
+ [[inputs.cpu]]
+ [[inputs.system]]
