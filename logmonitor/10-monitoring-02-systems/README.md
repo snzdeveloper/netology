@@ -46,7 +46,7 @@
 
 В виде решения на это упражнение приведите скриншот веб-интерфейса ПО chronograf (`http://localhost:8888`).  
 
-<img src="https://github.com/snzdeveloper/netology/blob/res/logmonitor/10-monitoring-02-systems/VirtualBox_rocky9_01_11_2025_14_22_25.jpg" width="100%">  
+<img src="https://github.com/snzdeveloper/netology/blob/main/logmonitor/10-monitoring-02-systems/VirtualBox_rocky9_01_11_2025_14_22_25.jpg" width="100%">  
 
 P.S.: если при запуске некоторые контейнеры будут падать с ошибкой - проставьте им режим `Z`, например
 `./data:/var/lib:Z`
@@ -60,7 +60,7 @@ P.S.: если при запуске некоторые контейнеры б�
 
 Для выполнения задания приведите скриншот с отображением метрик утилизации cpu из веб-интерфейса.  
 
-<img src="https://github.com/snzdeveloper/netology/blob/res/logmonitor/10-monitoring-02-systems/VirtualBox_rocky9_01_11_2025_14_32_33.jpg" width="100%">  
+<img src="https://github.com/snzdeveloper/netology/blob/main/logmonitor/10-monitoring-02-systems/VirtualBox_rocky9_01_11_2025_14_32_33.jpg" width="100%">  
 
 #
 9. Изучите список [telegraf inputs](https://github.com/influxdata/telegraf/tree/master/plugins/inputs). 
@@ -90,7 +90,7 @@ P.S.: если при запуске некоторые контейнеры б�
 После настройке перезапустите telegraf, обновите веб интерфейс и приведите скриншотом список `measurments` в 
 веб-интерфейсе базы telegraf.autogen . Там должны появиться метрики, связанные с docker.
 
-<img src="https://github.com/snzdeveloper/netology/blob/res/logmonitor/10-monitoring-02-systems/VirtualBox_rocky9_01_11_2025_14_48_42.jpg" width="100%">  
+<img src="https://github.com/snzdeveloper/netology/blob/main/logmonitor/10-monitoring-02-systems/VirtualBox_rocky9_01_11_2025_14_48_42.jpg" width="100%">  
 
 
 Факультативно можете изучить какие метрики собирает telegraf после выполнения данного задания.
