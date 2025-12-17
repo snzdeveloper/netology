@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: busybox-deployment
+  labels:
+    app: nginx
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: delay
+        image: busybox
+        command: ['sh', '-c', 'until nslookup netology-svc.default.svc.cluster.local; do echo waiting for dependent-service; sleep 5; done;']
