@@ -1,0 +1,5 @@
+---
+- name: test_ping
+  ping: 
+  tags:
+    - ping

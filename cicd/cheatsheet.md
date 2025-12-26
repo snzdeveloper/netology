@@ -34,3 +34,8 @@ docker run \
   --volume jenkins-data:/var/jenkins_home \
   --volume jenkins-docker-certs:/certs/client:ro \
   myjenkins-blueocean:2.491
+
+
+### firewalld
+#iptables -L -v -n
+#nft list ruleset

@@ -1,0 +1,16 @@
+---
+- hosts: all
+  roles:
+    - role: ../roles/tc
+      tags:
+        - test1
+        - datadir
+      vars:
+        teamcity_server: true
+      become: True
+  # tags:
+  #   - always
+     
+
+  environment:
+    ANSIBLE_ROLES_PATH: ../roles

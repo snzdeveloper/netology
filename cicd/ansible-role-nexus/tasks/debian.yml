@@ -1,0 +1,20 @@
+---
+- name: Install JDK
+  become: true
+  package:
+    name: [openjdk-17-jdk, openjdk-17-dbg, acl]
+    state: present
+
+#https://docs.ansible.com/ansible/latest/collections/ansible/builtin/iptables_module.html
+- name: Allow new incoming SYN packets on TCP port 22 (SSH)
+  become: true
+  ansible.builtin.iptables:
+    chain: INPUT
+    protocol: tcp
+    destination_port: "{{ item }}"
+    ctstate: NEW
+    syn: match
+    jump: ACCEPT
+    comment: Accept new nexus connections.
+  loop: 
+    - "{{ nexus_port }}"

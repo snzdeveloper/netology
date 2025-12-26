@@ -1,0 +1,18 @@
+---
+dependencies:
+  - role: dcjulian29.docker
+galaxy_info:
+  author: Julian Easterling
+  description: Ansible role to install either a Teamcity server or agent
+  galaxy_tags:
+    - jetbrains
+    - teamcity
+    - devops
+  license: Apache-2.0
+  min_ansible_version: "2.16.7"
+  namespace: dcjulian29
+  platforms:
+    - name: Debian
+      versions:
+        - bookworm
+  role_name: teamcity

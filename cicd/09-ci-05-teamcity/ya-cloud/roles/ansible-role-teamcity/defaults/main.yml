@@ -1,0 +1,26 @@
+---
+teamcity_agent: false
+teamcity_agent_image: jetbrains/teamcity-agent
+teamcity_agent_name: teamcity_agent
+teamcity_agent_server_trusted_certificates: []
+  # - /etc/ssl/certs/custom_ca.pem
+teamcity_agent_token: ""
+teamcity_agent_version: "{{ teamcity_server_version }}-linux-sudo"
+teamcity_data_dir: /opt
+teamcity_database_mysql: false
+teamcity_database_mssql: false
+teamcity_database_postgre: false
+teamcity_gid: 980
+teamcity_group: teamcity
+teamcity_http_port: "{{ teamcity_server_port }}"
+teamcity_https: false
+teamcity_https_acme: false
+teamcity_name: teamcity_server
+teamcity_server: true
+teamcity_server_fqdn: "{{ ansible_hostname }}"
+teamcity_server_image: jetbrains/teamcity-server
+teamcity_server_port: 8111
+teamcity_server_tls_cert: /etc/ssl/certs/ssl-cert-snakeoil.pem
+teamcity_server_tls_key: /etc/ssl/private/ssl-cert-snakeoil.key
+teamcity_server_url: "{{ 'https' if teamcity_https else 'http' }}://{{ teamcity_fqdn }}:{{ teamcity_server_port }}"
+teamcity_server_version: "2022.10.1"

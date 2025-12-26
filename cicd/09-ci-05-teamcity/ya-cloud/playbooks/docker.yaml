@@ -1,0 +1,8 @@
+---
+- hosts: all
+  roles:
+    - role: ../roles/docker
+      become: True
+
+  environment:
+    ANSIBLE_ROLES_PATH: ../roles

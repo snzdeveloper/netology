@@ -1,0 +1,40 @@
+---
+- name: Ensure container group exists with correct gid
+  ansible.builtin.group:
+    #gid: "{{ teamcity_gid }}"
+    name: "{{ teamcity_group }}"
+    state: present
+
+# - name: Create new user 'teamcity' with specific UID and primary group
+#   ansible.builtin.user:
+#     name: teamcity
+#     #uid: 2001
+#     group: "{{ teamcity_group }}"
+#     groups: [ docker ]
+#     create_home: false
+#     state: present
+#   register: user_teamcity_result
+
+# - name: ansible set user id
+#   ansible.builtin.set_fact:
+#     teamcity_uid: "{{ user_teamcity_result.uid }}"
+#   when: not user_teamcity_result.failed
+
+- name: Include tasks for Teamcity Server if needed
+  ansible.builtin.include_tasks: server.yml
+  when:
+    - teamcity_server | bool
+
+- name: Include tasks for Teamcity Agent if needed
+  ansible.builtin.include_tasks: agent.yml
+  vars:
+    teamcity_name: teamcity_agent
+  when:
+    - teamcity_agent | bool
+
+
+- name: Include task to support HTTPS if needed
+  ansible.builtin.include_tasks: https.yml
+  when:
+    - teamcity_server
+    - teamcity_https

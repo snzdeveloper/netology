@@ -1,0 +1,25 @@
+{
+  "data-root": "{{ docker_data_dir }}",
+  "debug": {{ docker_debug | to_json }},
+{% if ansible_default_ipv6.address is defined %}
+  "ipv6": true,
+  "fixed-cidr-v6": "fd00::/80",
+{% endif %}
+{% if docker_log_gelf %}
+  "log-driver": "gelf",
+  "log-opts": {
+    "gelf-address": "{{ docker_log_gelf_url }}",
+    "cache-disabled": "false",
+    "cache-max-file": "{{ docker_log_cache_files }}",
+    "cache-max-size": "{{ docker_log_cache_size }}",
+    "cache-compress": "{{ docker_log_cache_compress | to_json }}"
+  }
+{% else %}
+  "log-driver": "local",
+  "log-opts": {
+    "max-file": "{{ docker_log_local_files}}",
+    "max-size": "{{ docker_log_local_size }}",
+    "compress": "{{ docker_log_local_compress | to_json }}"
+  }
+{% endif %}
+}

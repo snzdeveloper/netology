@@ -1,0 +1,8 @@
+---
+- name: Get uname
+  ansible.builtin.shell: uname -a
+  register: current_uname_a_output
+
+- name: Display current uname
+  ansible.builtin.debug:
+    msg: "Current uname on {{ inventory_hostname }}: {{ current_uname_a_output.stdout }}"

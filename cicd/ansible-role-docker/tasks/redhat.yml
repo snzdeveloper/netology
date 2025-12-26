@@ -1,0 +1,21 @@
+---
+- name: Ensure outdated versions of Docker packages are absent
+  ansible.builtin.package:
+    name:
+      - docker
+      - docker-common
+      - docker-engine
+    state: absent
+
+- name: Add Docker RPM signing key
+  ansible.builtin.rpm_key:
+    key: "{{ docker_yum_gpg_key }}"
+    state: present
+
+- name: Add Docker YUM repository
+  ansible.builtin.get_url:
+    url: "{{ docker_yum_repo_url }}"
+    dest: "/etc/yum.repos.d/docker-{{ docker_edition }}.repo"
+    owner: root
+    group: root
+    mode: "0644"

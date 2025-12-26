@@ -1,0 +1,14 @@
+{
+  "cSpell.words": [
+    "cmdline",
+    "dcjulian",
+    "geerlingguy",
+    "gelf",
+    "lineinfile",
+    "runc",
+    "unmark"
+  ],
+  "yaml.schemas": {
+    "https://raw.githubusercontent.com/ansible/ansible-lint/main/src/ansiblelint/schemas/meta.json": "file:///c%3A/code/_ansible/ansible-role-docker/meta/main.yml"
+  }
+}

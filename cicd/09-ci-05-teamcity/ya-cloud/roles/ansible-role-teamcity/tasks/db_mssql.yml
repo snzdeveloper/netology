@@ -1,0 +1,27 @@
+---
+- name: Check if MSSQL JDBC Driver if present
+  ansible.builtin.stat:
+    path: "{{ teamcity_data_dir }}/{{ teamcity_name }}/data/lib/jdbc/mssql-jdbc-11.2.1.jre11.jar"
+  register: results
+
+- name: Copy MSSQL JDBC driver archive if needed.
+  ansible.builtin.copy:
+    dest: /tmp/mssql.tar.gz
+    src: sqljdbc_11.2.1.0_enu.tar.gz
+    mode: '0444'
+  when: not results.stat.exists
+
+- name: Extract MSSQL JDBC driver archive if needed
+  ansible.builtin.unarchive:
+    dest: /tmp
+    src: /tmp/mssql.tar.gz
+    remote_src: true
+  when: not results.stat.exists
+
+- name: Ensure MSSQL JDBC Driver is present if needed
+  ansible.builtin.copy:
+    dest: "{{ teamcity_data_dir }}/{{ teamcity_name }}/data/lib/jdbc/"
+    src: /tmp/sqljdbc_11.2/enu/mssql-jdbc-11.2.1.jre11.jar
+    remote_src: true
+    mode: '0444'
+  when: not results.stat.exists

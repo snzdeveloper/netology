@@ -1,0 +1,8 @@
+---
+- name: Get current date and time
+  ansible.builtin.shell: date
+  register: current_datetime_output
+
+- name: Display current date and time
+  ansible.builtin.debug:
+    msg: "Current date and time on {{ inventory_hostname }}: {{ current_datetime_output.stdout }}"

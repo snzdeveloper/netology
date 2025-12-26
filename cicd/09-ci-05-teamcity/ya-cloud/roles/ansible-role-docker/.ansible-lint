@@ -1,0 +1,17 @@
+---
+exclude_paths:
+  - .github/workflows/lint.yml
+
+skip_list: []
+
+warn_list:
+  - experimental
+
+kinds:
+  - playbook: "**/examples/*.{yml,yaml}"
+  - tasks: "**/tasks/*.{yml,yaml}"
+  - vars: "**/vars/*.{yml,yaml}"
+  - meta: "**/meta/main.yml"
+  - yaml: "**/*.{yml,yaml}"
+
+verbosity: 1

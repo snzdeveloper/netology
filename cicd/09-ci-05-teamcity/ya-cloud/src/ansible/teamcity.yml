@@ -1,0 +1,10 @@
+spec:
+containers:
+- image: jetbrains/teamcity-agent
+securityContext:
+privileged: false
+stdin: false
+tty: false
+env:
+- name: SERVER_URL
+value: “http://62.84.112.162:8111”

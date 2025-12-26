@@ -1,0 +1,13 @@
+---
+#https://www.reddit.com/r/ansible/comments/15uuduh/is_there_a_way_to_only_call_a_specific_task/
+#https://www.baeldung.com/ops/ansible-playbook-run-single-task
+
+- hosts: nexus
+  gather_facts: yes
+  roles:
+    - ../../ansible-role-nexus
+  vars:
+    roles_path: ../../
+    teamcity_server: true
+  environment:
+    ANSIBLE_ROLES_PATH: ../../../

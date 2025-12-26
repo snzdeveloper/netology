@@ -1,0 +1,24 @@
+---
+docker_apt_gpg_key: "{{ docker_repo_url }}/{{ ansible_distribution | lower }}/gpg"
+docker_apt_dist: "{{ ansible_distribution | lower }} {{ ansible_distribution_release }}"
+docker_apt_key: 9DC858229FC7DD38854AE2D88D81803C0EBFCD88
+docker_apt_keyring: /usr/share/keyrings/docker.gpg
+docker_apt_meta: "signed-by={{ docker_apt_keyring }}"
+docker_apt_repository: "deb [{{ docker_apt_meta }}] {{ docker_repo_url }}/{{ docker_apt_dist }} stable"
+docker_compose: false
+docker_data_dir: /opt/docker
+docker_debug: false
+docker_edition: ce    # 'ce' (Community Edition) or 'ee' (Enterprise Edition)
+docker_group_members: [ "{{ ansible_user }}" ]
+docker_log_cache_compress: true
+docker_log_cache_files: 5
+docker_log_cache_size: 20m
+docker_log_local_compress: true
+docker_log_local_files: 3
+docker_log_local_size: 10m
+docker_log_gelf: false
+docker_log_gelf_url: ''
+docker_repo_url: https://download.docker.com/linux
+docker_yum_dist: "{{ (ansible_distribution == 'Fedora') | ternary('fedora','centos') }}"
+docker_yum_repo_url: "{{ docker_repo_url }}/{{ docker_yum_dist }}/docker-ce.repo"
+docker_yum_gpg_key: "{{ docker_repo_url }}/centos/gpg"

@@ -1,0 +1,85 @@
+---
+- name: Ensure directories for Teamcity agent exist
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+    owner: "{{ teamcity_uid }}"
+    group: "{{ teamcity_group }}"
+    mode: "0755"
+  with_items:
+    - "{{ teamcity_data_dir }}/{{ teamcity_name }}"
+    - "{{ teamcity_data_dir }}/{{ teamcity_name }}/conf"
+    # - "{{ teamcity_data_dir }}/{{ teamcity_name }}/docker"
+    # - "{{ teamcity_data_dir }}/{{ teamcity_name }}/logs"
+    # - "{{ teamcity_data_dir }}/{{ teamcity_name }}/plugins"
+    # - "{{ teamcity_data_dir }}/{{ teamcity_name }}/system"
+    # - "{{ teamcity_data_dir }}/{{ teamcity_name }}/system/serverTrustedCertificates"
+    # - "{{ teamcity_data_dir }}/{{ teamcity_name }}/temp"
+    # - "{{ teamcity_data_dir }}/{{ teamcity_name }}/tools"
+    # - "{{ teamcity_data_dir }}/{{ teamcity_name }}/work"
+
+- name: Ensure additional server trusted certificates are present if specified
+  ansible.builtin.copy:
+    src: "{{ item }}"
+    dest: "{{ teamcity_data_dir }}/{{ teamcity_name }}/system/serverTrustedCertificates/"
+    owner: "{{ teamcity_uid }}"
+    group: "{{ teamcity_group }}"
+    mode: "0644"
+    remote_src: true
+  with_items: "{{ teamcity_agent_server_trusted_certificates }}"
+  when: teamcity_agent_server_trusted_certificates | length > 0
+
+- name: Pull the specified Teamcity agent docker image.
+  community.docker.docker_image:
+    name: "{{ teamcity_agent_image }}"
+    source: pull
+    tag: "{{ teamcity_agent_version }}"
+  register: agent_image
+
+- name: Stop and remove existing Docker container if needed
+  ansible.builtin.command: "docker stop {{ teamcity_agent_name }} && docker rm {{ teamcity_agent_name }}"
+  register: results
+  failed_when: >-
+    results is failed and
+    "No such container" not in results.stderr | default(false)
+  changed_when: "{{ ('No such container' not in results.stderr) | default(false) }}"
+  when: agent_image.changed
+
+- name: Ensure Teamcity agent container is created
+  community.docker.docker_container:
+    container_default_behavior: no_defaults
+    detach: true
+    env:
+      AGENT_NAME: "{{ teamcity_agent_name }}"
+      AGENT_TOKEN: "{{ teamcity_agent_token | default(omit) }}"
+      DOCKER_IN_DOCKER: "start"
+      SERVER_URL: "{{ teamcity_server_url }}"
+      TZ: "{{ ansible_date_time.tz }}"
+    image: "{{ teamcity_agent_image }}:{{ teamcity_agent_version }}"
+    interactive: false
+    name: "teamcity_agent"
+    privileged: true
+    restart_policy: always
+    state: started
+    volumes:
+      - "{{ teamcity_data_dir }}/{{ teamcity_name }}/conf:/data/teamcity_agent/conf"
+    #   - "{{ teamcity_data_dir }}/{{ teamcity_name }}/docker:/var/lib/docker"
+    #   - "{{ teamcity_data_dir }}/{{ teamcity_name }}/logs:/opt/buildagent/logs"
+    #   - "{{ teamcity_data_dir }}/{{ teamcity_name }}/plugins:/opt/buildagent/plugins"
+    #   - "{{ teamcity_data_dir }}/{{ teamcity_name }}/system:/opt/buildagent/system"
+    #   - "{{ teamcity_data_dir }}/{{ teamcity_name }}/temp:/opt/buildagent/temp"
+    #   - "{{ teamcity_data_dir }}/{{ teamcity_name }}/tools:/opt/buildagent/tools"
+    #   - "{{ teamcity_data_dir }}/{{ teamcity_name }}/work:/opt/buildagent/work"
+    #   - "/var/run/docker.sock:/var/run/docker.sock"
+    # user: "0:{{ teamcity_gid }}"
+  register: tc_agent
+
+- name: Restart the Teamcity agent container if needed
+  ansible.builtin.command: "docker restart {{ teamcity_agent_name }}"
+  when: tc_agent.changed
+  register: rc
+  changed_when: "{{ teamcity_agent_name in rc.stdout }}"
+
+
+
+#docker run -e SERVER_URL="http://192.168.56.103:8111"  -v /opt/teamcity_agent/conf:/data/teamcity_agent/conf  jetbrains/teamcity-agent

@@ -1,0 +1,19 @@
+---
+- name: Install JDK
+  become: true
+  package:
+    name: [java-17-openjdk, java-17-openjdk-devel]
+    state: present
+
+#https://www.redhat.com/en/blog/listening-ports-firewalld-ansible
+- name: Add ports to firewall
+  become: true
+  firewalld:
+    port: "{{ item }}/tcp"
+    state: enabled
+    immediate: true
+    permanent: true
+  loop: 
+    - "{{ nexus_port }}"
+#  loop: "{{ ansible_facts.tcp_listen  | map(attribute='port') | sort | list }}"
+#  register: ports_added_to_firewalld

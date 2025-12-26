@@ -1,0 +1,6 @@
+---
+- name: Ensure PostgreSQL JDBC Driver is present if needed
+  ansible.builtin.get_url:
+    dest: "{{ teamcity_data_dir }}/{{ teamcity_name }}/data/lib/jdbc/"
+    url: https://jdbc.postgresql.org/download/postgresql-42.3.3.jar
+    mode: '0444'

@@ -1,0 +1,5 @@
+---
+- src: https://github.com/snzdeveloper/ansible-role-teamcity.git
+  scm: git
+  version: master
+  name: teamcity

@@ -1,0 +1,29 @@
+---
+- hosts: all
+  roles:
+     - role: ../roles/system
+       tags:
+         - test1
+
+  # tasks:
+  #   - include_role:
+  #       name: ../roles/system
+  #       #tasks_from: ping.yaml
+  #       apply:
+  #         tags:
+  #           - install
+  #     tags: [ never, date ]
+
+  #   #ansible-playbook -vvvvv -i hosts.yml ./setup.yaml --tags test
+  #   #ansible-playbook -vvvvv -i hosts.yml ./setup.yaml --tags test1
+  #   - name: Apply tags to tasks within included file
+  #     ansible.builtin.include_role:
+  #       name: ../roles/system
+  #       apply:
+  #         tags:
+  #           - test1
+  #     tags:
+  #       - always
+
+  environment:
+    ANSIBLE_ROLES_PATH: ../roles

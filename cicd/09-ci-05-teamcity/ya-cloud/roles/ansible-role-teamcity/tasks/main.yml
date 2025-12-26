@@ -1,0 +1,22 @@
+---
+- name: Ensure container group exists with correct gid
+  ansible.builtin.group:
+    gid: "{{ teamcity_gid }}"
+    name: "{{ teamcity_group }}"
+    state: present
+
+- name: Include tasks for Teamcity Agent if needed
+  ansible.builtin.include_tasks: agent.yml
+  when:
+    - teamcity_agent
+
+- name: Include tasks for Teamcity Server if needed
+  ansible.builtin.include_tasks: server.yml
+  when:
+    - teamcity_server
+
+- name: Include task to support HTTPS if needed
+  ansible.builtin.include_tasks: https.yml
+  when:
+    - teamcity_server
+    - teamcity_https

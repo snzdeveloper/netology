@@ -1,0 +1,12 @@
+---
+- name: Test ping
+  import_tasks: ping.yaml
+  tags: test
+
+- name: Test uname
+  import_tasks: uname.yaml
+  tags: setup
+
+- name: Test date
+  import_tasks: date.yaml
+  tags: setup

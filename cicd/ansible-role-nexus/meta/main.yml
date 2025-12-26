@@ -1,0 +1,25 @@
+---
+dependencies: []
+
+galaxy_info:
+  role_name: nexus
+  author: guy
+  description: Nexus.
+  company: "Midwestern Mac, LLC"
+  license: "MIT"
+  min_ansible_version: 2.10
+  platforms:
+    - name: Fedora
+      versions:
+        - all
+    - name: Debian
+      versions:
+        - all
+    - name: Ubuntu
+      versions:
+        - all
+  galaxy_tags:
+    - nexus
+
+#https://timeweb.cloud/tutorials/cloud/ustanovka-i-ispolzovanie-nexus-repository-dlya-hraneniya-artefaktov
+#https://habr.com/ru/articles/473358/

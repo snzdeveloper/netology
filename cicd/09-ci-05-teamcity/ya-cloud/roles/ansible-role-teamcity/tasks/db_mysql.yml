@@ -1,0 +1,27 @@
+---
+- name: Check if MSSQL JDBC Driver if present
+  ansible.builtin.stat:
+    path: "{{ teamcity_data_dir }}/{{ teamcity_name }}/data/lib/jdbc/mysql-connector-j-8.0.31.jar"
+  register: results
+
+- name: Copy MySQL JDBC driver archive if needed
+  ansible.builtin.copy:
+    dest: /tmp/mysql.tar.gz
+    src: mysql-connector-j-8.0.31.tar.gz
+    mode: '0444'
+  when: not results.stat.exists
+
+- name: Extract MySQL JDBC drive archive if needed
+  ansible.builtin.unarchive:
+    dest: /tmp
+    src: /tmp/mysql.tar.gz
+    remote_src: true
+  when: not results.stat.exists
+
+- name: Ensure MySQL JDBC Driver is present if needed
+  ansible.builtin.copy:
+    dest: "{{ teamcity_data_dir }}/{{ teamcity_name }}/data/lib/jdbc/"
+    src: /tmp/mysql-connector-j-8.0.31/mysql-connector-j-8.0.31.jar
+    remote_src: true
+    mode: '0444'
+  when: not results.stat.exists

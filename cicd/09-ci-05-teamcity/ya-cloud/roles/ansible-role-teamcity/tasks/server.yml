@@ -1,0 +1,79 @@
+---
+- name: Ensure directories for Teamcity server exist
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+    owner: 1000
+    group: "{{ teamcity_group }}"
+    mode: "0755"
+  with_items:
+    - "{{ teamcity_data_dir }}/{{ teamcity_name }}"
+    - "{{ teamcity_data_dir }}/{{ teamcity_name }}/conf"
+    - "{{ teamcity_data_dir }}/{{ teamcity_name }}/data"
+    - "{{ teamcity_data_dir }}/{{ teamcity_name }}/logs"
+    - "{{ teamcity_data_dir }}/{{ teamcity_name }}/temp"
+
+- name: Include tasks to support Microsoft SQL Server if needed
+  ansible.builtin.include_tasks: db_mssql.yml
+  when: teamcity_database_mssql
+
+- name: Include tasks to support MySQL Server if needed
+  ansible.builtin.include_tasks: db_mysql.yml
+  when: teamcity_database_mysql
+
+- name: Include tasks to support Postgres Server if needed
+  ansible.builtin.include_tasks: db_postgres.yml
+  when: teamcity_database_postgre
+
+- name: Ensure Teamcity serer configuration file is present
+  ansible.builtin.template:
+    src: server.xml.j2
+    dest: "{{ teamcity_data_dir }}/{{ teamcity_name }}/conf/server.xml"
+    owner: root
+    group: teamcity
+    mode: "0644"
+  tags:
+    - configure
+
+- name: Pull the specified Teamcity server docker image
+  community.docker.docker_image:
+    name: "{{ teamcity_server_image }}"
+    source: pull
+    tag: "{{ teamcity_server_version }}"
+  register: server_image
+
+- name: Stop and remove existing Docker container if needed
+  ansible.builtin.command: "docker stop {{ teamcity_name }} && docker rm {{ teamcity_name }}"
+  register: results
+  failed_when: >-
+    results is failed and
+    "No such container" not in results.stderr | default(false)
+  changed_when: "{{ ('No such container' not in results.stderr) | default(false) }}"
+  when: server_image.changed
+
+- name: Ensure the Teamcity server container is created and running
+  community.docker.docker_container:
+    container_default_behavior: no_defaults
+    detach: true
+    env:
+      TZ: "{{ ansible_date_time.tz }}"
+      TEAMCITY_HTTPS_PROXY_ENABLED: "{{ teamcity_https | default('false') | quote | lower | string }}"
+    image: "{{ teamcity_server_image }}:{{ teamcity_server_version }}"
+    interactive: false
+    name: "{{ teamcity_name }}"
+    ports: "{{ '[]' if teamcity_https else (teamcity_server_port | string + ':8111') }}"
+    restart_policy: always
+    state: started
+    volumes:
+      - "{{ teamcity_data_dir }}/{{ teamcity_name }}/conf:/opt/teamcity/conf/"
+      - "{{ teamcity_data_dir }}/{{ teamcity_name }}/data:/data/teamcity_server/datadir"
+      - "{{ teamcity_data_dir }}/{{ teamcity_name }}/logs:/opt/teamcity/logs"
+      - "{{ teamcity_data_dir }}/{{ teamcity_name }}/temp:/opt/teamcity/temp"
+    user: "0:{{ teamcity_gid }}"
+  register: tc_server
+
+- name: Restart the Teamcity server container if needed
+  ansible.builtin.command: "docker restart {{ teamcity_name }}"
+  when: tc_server.changed
+  register: rc
+  changed_when: "{{ teamcity_name in rc.stdout }}"
