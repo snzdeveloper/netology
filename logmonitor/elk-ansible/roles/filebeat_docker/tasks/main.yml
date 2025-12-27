@@ -1,0 +1,30 @@
+- include_tasks: "preflight.yml"
+
+- name: "Deploy Filebeat config file"
+  template:
+    src: "filebeat.yml.j2"
+    dest: "{{ filebeat_docker__data }}/filebeat.yml"
+    owner: "{{ filebeat_user_name }}"
+    group: "{{ filebeat_user_group }}"
+    mode: 0644
+  become: true
+#  notify: "Restart filebeat"
+
+- name: Create Filebeat
+  become_user: "{{ filebeat_user_name }}"
+  docker_container:
+    name: filebeat
+    restart_policy: unless-stopped
+    image: "elastic/filebeat:{{ filebeat_version }}"
+    volumes:
+      - "{{ filebeat_docker__data }}/filebeat.yml:/usr/share/filebeat/filebeat.yml:Z"
+      - /var/log:/var/log:ro
+      - /var/lib/docker:/var/lib/docker:Z
+      - /var/run/docker.sock:/var/run/docker.sock:Z
+    command: >
+      -e 
+      -strict.perms=false
+    state: started
+    privileged: true
+    user: root
+

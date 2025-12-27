@@ -1,0 +1,14 @@
+---
+- name: "Create Filebeat data directories"
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: "{{ filebeat_user_name }}"
+    group: "{{ filebeat_user_group }}"
+    mode: u+rwX,g+rwX,o=rX
+  become: true
+  with_items:
+    - "{{ filebeat_docker__data }}"
+    # - "{{ filebeat_docker__data_dir }}/etc"
+    # - "{{ filebeat_docker__data_dir }}/etc/rules"
+    # - "{{ filebeat_docker__data_dir }}/data"

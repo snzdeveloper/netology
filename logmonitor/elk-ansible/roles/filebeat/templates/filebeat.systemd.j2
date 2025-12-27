@@ -1,0 +1,14 @@
+[Unit]
+Description=filebeat service
+After=network.target
+
+[Service]
+Type=forking
+User={{ filebeat_user_name }}
+Group={{ filebeat_user_group }}
+LimitNOFILE={{ filebeat_ulimit }}
+ExecStart={{ filebeat_directory_home }}/filebeat -e -c {{ filebeat_config_dir }}/filebeat.yml
+Restart=on-abort
+
+[Install]
+WantedBy=multi-user.target

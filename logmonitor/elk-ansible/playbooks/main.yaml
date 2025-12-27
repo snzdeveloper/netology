@@ -1,0 +1,42 @@
+---
+- hosts: localhost
+  tasks:
+    - name: set filebeat targets
+      set_fact:
+        targets: "{{ targets | default([]) + [ hostvars[item]['ansible_host'] ] }}" # append object
+      with_items: "{{ groups['filebeats'] }}" 
+
+    # - name: set targets
+    #   set_fact:
+    #     node_targets: "{{ targets | list | product(['9090']) | map('join', ':') | list }}"
+
+    - name: set filebeat targets
+      set_fact:
+        observers: "{{ observers | default([]) + [ hostvars[item]['ansible_host'] ] }}" # append object
+      with_items: "{{ groups['observers'] }}" 
+
+    # - name: set targets
+    #   set_fact:
+    #     node_observers: "{{ observers | list | product(['9090']) | map('join', ':') | list }}"
+
+
+- hosts: filebeats
+  tasks:
+    - name: hostvars
+      debug:
+        msg: "{{ hostvars['localhost']['observers'] | list | product(['5044']) | map('join', ':') | list }}"
+
+- hosts: filebeats
+  become: true
+  roles:
+    - role: ../roles/filebeat_docker
+      vars:
+        filebeat_version: 8.7.0
+        filebeat_output_logstash_hosts: "{{ hostvars['localhost']['observers'] | list | product(['5044']) | map('join', ':') | list }}"
+
+# - hosts: observers
+#   roles:
+#     - role: ../roles/elk_docker_compose
+#       vars:
+#         filebeats: "{{ targets | list | product(['9090']) | map('join', ':') | list }}"
+

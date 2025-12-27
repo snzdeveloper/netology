@@ -1,0 +1,19 @@
+---
+#curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-9.2.1-linux-x86_64.tar.gz
+- name: Download Filebeat
+  become: true
+  become_user: "{{ filebeat_user_name }}"
+  get_url:
+    url: "{{ filebeat_download_url }}/filebeat-{{ filebeat_version }}-linux-x86_64.tar.gz"
+    dest: "{{ filebeat_directory_package }}/filebeat-{{ filebeat_version }}.tar.gz"
+
+#tar xzvf filebeat-9.2.1-linux-x86_64.tar.gz
+- name: Unpack Filebeat
+  become: true
+  become_user: "{{ filebeat_user_name }}"
+  unarchive:
+    remote_src: true
+    creates: "{{ filebeat_directory_home }}"
+    src: "{{ filebeat_directory_package }}/filebeat-{{ filebeat_version }}.tar.gz"
+    dest: "{{ filebeat_directory_home }}"
+

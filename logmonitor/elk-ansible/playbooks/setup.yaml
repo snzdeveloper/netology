@@ -1,0 +1,135 @@
+---
+  #https://stackoverflow.com/questions/77106000/how-to-extract-multiple-hostvars-from-all-hosts-in-a-group
+  #https://stackoverflow.com/questions/54091449/the-right-way-to-extract-a-list-of-attributes-from-a-list-of-maps-in-ansible
+  #https://stackoverflow.com/questions/75974201/is-it-possible-to-loop-through-array-of-specific-host-and-configuration
+
+- hosts: 
+    # - observers
+    # - targets
+    - localhost
+  # roles:
+  #    - role: ../roles/system
+  #      tags:
+  #        - test1
+  
+  tasks:
+    - name: Test set products
+      set_fact:
+        productt: "{{ ['web', 'db'] }}"
+
+    - name: Test set products
+      set_fact:
+        productt: "{{ productt | product(['01', '02']) | map('join', '-') | list }}"
+
+    - name: Generate hostnames
+      ansible.builtin.debug:
+        msg: "{{ productt }}"
+          
+    - name: set hostvars
+      set_fact:
+        #msg: "{{ hostvars | dict2items | selectattr('key', 'in', groups['target1']) }}"
+        xhosto:  "{{ xhosto | default([]) + [{ item.key: item.value.ansible_host }] }}"
+        #msg:  "{{ item }}"
+      with_items: "{{ hostvars | dict2items | selectattr('key', 'in', groups['target1']) }}"
+          
+    - name: set hostvars
+      set_fact:
+        #msg: "{{ hostvars | dict2items | selectattr('key', 'in', groups['target1']) }}"
+        xhosts:  "{{ groups['target1'] | map('extract', hostvars) }}"
+        xhosta:  "{{ groups['target1'] | map('extract', hostvars) | json_query('[].{ip: ansible_host, ansible_user: ansible_user}') }}"
+        #xhostb:  "{{ groups['target1'] | {key:key, value: map('extract', hostvars, 'ansible_host')} }}"
+        #xhostc:  "{{ groups['target1'] | extract(hostvars) }}"
+        #msg:  "{{ item }}"
+
+    #не работает как ожидалось (остаётся только последний item из списка)
+    #https://stackoverflow.com/questions/77106000/how-to-extract-multiple-hostvars-from-all-hosts-in-a-group
+    - name: set hostvars
+      set_fact:
+        xhostc:  
+          - k: "{{ item }}"
+            v: "{{ hostvars[item] }}"
+        #msg:  "{{ item }}"
+      with_items: "{{ groups['target1'] }}" 
+
+    - name: set hostvars
+      set_fact:
+        xhostd: "{{ xhostd | default([]) + [{ 'key': item, 'value': { 'ip': hostvars[item]['ansible_host'] , 'ansible_user': hostvars[item]['ansible_user'] } }] }}" # append object
+        #xhostd: "{{ [{'key': 'hi', 'value': 'bye'}, {'key': 'ciao', 'value': 'ciao'}] | items2dict }}"
+      with_items: "{{ groups['target1'] }}" 
+
+    - name: set node exporter targets
+      set_fact:
+        targets: "{{ targets | default([]) + [ hostvars[item]['ansible_host'] ] }}" # append object
+      with_items: "{{ groups['target1'] }}" 
+
+    - name: set targets
+      set_fact:
+        node_targets: "{{ targets | list | product(['9090']) | map('join', ':') | list }}"
+
+    - name: set hostvars
+      set_fact:
+        xhoste: "{{ xhostd | items2dict }}" # append object
+
+    - name: hostvars
+      debug:
+        - var: xhosts
+        - var: xhosta
+        #var: "{{ xhostd | list | items2dict(key_name='key',value_name='val') }}"
+        - var: xhoste
+        - var: node_targets
+
+    - name: controlplanes
+      debug:
+        msg: "{{ item }}"
+      #loop: "{{ hostvars|dict2items|selectattr('value.inventory_hostname')|map(attribute='key') }}"
+      loop: "{{ hostvars | dict2items | selectattr('value.inventory_hostname') | map(attribute='key') }}"
+      when: inventory_hostname in groups['all']
+    
+    - name: Debug hostnames and IP addresses
+      debug:
+        msg: "Hostname: {{ item }}, IP: {{ hostvars[item]['ansible_host'] | default('N/A') }}"
+      #loop: "{{ ansible_play_hosts_all }}"
+      loop: "{{ groups['nodes'] }}"
+
+    - name: Use the ansible_play_hosts variable directly
+      # This task will run on each host and print the list
+      debug:
+        msg: "Hosts in this play: {{ ansible_play_hosts }}"
+
+    - name: Get hostnames and their IP addresses and store in a variable on the control node
+      run_once: true  # Run this task only on the first host
+      vars:
+        host_ips: "{{ ansible_play_hosts | map('extract', hostvars, ['ansible_host']) | join(', ') }}"
+      debug:
+        msg: "All host IPs: {{ host_ips }}"
+      # Note: 'ansible_host' is an inventory variable; you may need to gather facts first 
+      # or use another variable like 'ansible_default_ipv4.address' if facts are gathered.
+
+    - name: Use the inventory_hostnames lookup to get hosts in a specific group
+      run_once: true
+      vars:
+        all_webservers: "{{ lookup('ansible.builtin.inventory_hostnames', 'nodes') }}"
+      debug:
+        msg: "All webservers from inventory: {{ all_webservers }}"      
+  # tasks:
+  #   - include_role:
+  #       name: ../roles/system
+  #       #tasks_from: ping.yaml
+  #       apply:
+  #         tags:
+  #           - install
+  #     tags: [ never, date ]
+
+  #   #ansible-playbook -vvvvv -i hosts.yml ./setup.yaml --tags test
+  #   #ansible-playbook -vvvvv -i hosts.yml ./setup.yaml --tags test1
+  #   - name: Apply tags to tasks within included file
+  #     ansible.builtin.include_role:
+  #       name: ../roles/system
+  #       apply:
+  #         tags:
+  #           - test1
+  #     tags:
+  #       - always
+
+  environment:
+    ANSIBLE_ROLES_PATH: ../roles

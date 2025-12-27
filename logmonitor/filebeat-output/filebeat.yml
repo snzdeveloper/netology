@@ -1,0 +1,26 @@
+filebeat.inputs:
+  [{"type": "filestream","paths": ["/var/log/*.log"],"enabled":"true"}]
+
+#processors:
+#  - add_docker_metadata:
+#      host: "unix:///var/run/docker.sock"
+#
+#  - decode_json_fields:
+#      fields: ["message"]
+#      target: "json"
+#      overwrite_keys: true
+
+#output.logstash:
+#  hosts: ["192.168.56.102:5046"]
+#  protocol: tcp
+
+output.file:
+  path: "/tmp/filebeat"
+  filename: filebeat
+  #rotate_every_kb: 10000
+  #number_of_files: 7
+  #permissions: 0600
+  #rotate_on_startup: true    
+
+#logging.json: true
+logging.metrics.enabled: false

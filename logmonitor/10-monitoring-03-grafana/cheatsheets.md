@@ -14,7 +14,7 @@ iptables:
     sudo iptables -L -n -v
 nft:
     #https://wiki.archlinux.org/title/Nftables
-
+#https://www.digitalocean.com/community/tutorials/how-to-use-netcat-to-establish-and-test-tcp-and-udp-connections
 
 CPU: 100 - (avg by (instance) (irate(node_cpu_seconds_total{job="nodeexporter",mode="idle"}[30s])) * 100)
 

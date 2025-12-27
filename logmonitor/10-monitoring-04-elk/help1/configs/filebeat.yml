@@ -1,9 +1,7 @@
 filebeat.inputs:
-  - type: filestream
+  - type: log
     paths:
-      - '/var/log/*.log'
-    enabled: true
-
+      - '/var/logs/*.log'
 #  - type: container
 #    paths:
 #      - '/var/lib/docker/containers/*/*.log'
@@ -16,9 +14,6 @@ filebeat.inputs:
 #       fields: ["message"]
 #       target: "json"
 #       overwrite_keys: true
-# output.file:
-#   path: "/tmp/filebeat"
-#   filename: filebeat
 
 output.logstash:
   hosts: ["logstash:5046"]

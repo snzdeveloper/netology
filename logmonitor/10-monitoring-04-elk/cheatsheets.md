@@ -1,0 +1,11 @@
+#https://www.elastic.co/docs/reference/search-ui/solutions-ecommerce-autocomplete
+#https://www.elastic.co/docs/reference/search-connectors/es-connectors-ms-sql
+#https://habr.com/ru/articles/590529/
+#https://www.elastic.co/docs/explore-analyze/transforms/ecommerce-transforms
+#https://www.elastic.co/docs/reference/search-ui
+#https://github.com/elastic/connectors
+#https://medium.com/@kakarotdevv/elasticsearch-with-net-core-web-api-and-docker-b9bf4237fc8f
+#https://code-maze.com/elasticsearch-aspnet-core/
+#https://dev.to/noob_jeffrey/how-to-load-reactjs-apps-into-existing-aspnet-simple-af-2e09
+#https://habr.com/ru/articles/280488/
+#https://stackoverflow.com/questions/37819542/index-json-document-using-elasticsearch-nest-c-sharp

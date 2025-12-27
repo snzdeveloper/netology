@@ -1,0 +1,10 @@
+---
+- name: Enable filebeat modules
+  ansible.builtin.command: "{{ filebeat_directory_home }}/filebeat modules enable {{ item }}"
+  ignore_errors: true
+  changed_when: false
+  register: modules_status
+  with_items: "{{ filebeat_modules }}"
+
+
+ 

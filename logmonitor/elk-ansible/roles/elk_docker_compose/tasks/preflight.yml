@@ -1,0 +1,50 @@
+---
+
+# - name: Create a volume
+#   community.docker.docker_volume:
+#     name: prometheus_data
+- name: Create Prometheus group
+  become: true
+  group:
+    name: "{{ prometheus_user_group }}"
+    state: present
+
+- name: Create Prometheus user
+  become: true
+  user:
+    name: "{{ prometheus_user_name }}"
+    create_home: no
+    shell: /bin/false    
+    groups:
+      - "{{ prometheus_user_group }}"
+      - docker
+    append: true
+
+- name: "Create Prometheus data directories"
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: "{{ prometheus_user_name }}"
+    group: "{{ prometheus_user_group }}"
+    mode: u+rwX,g+rwX,o=rX
+  become: true
+  with_items:
+    - "{{ prometheus_docker__data }}"
+    # - "{{ prometheus_docker__data_dir }}/etc"
+    # - "{{ prometheus_docker__data_dir }}/etc/rules"
+    # - "{{ prometheus_docker__data_dir }}/data"
+
+- name: Discover latest version
+  ansible.builtin.set_fact:
+    prometheus_version: "{{ (lookup('url', 'https://api.github.com/repos/{{ _prometheus_repo }}/releases/latest', headers=_github_api_headers, split_lines=False) | from_json).get('tag_name') | replace('v', '') }}"
+  run_once: true
+  until: prometheus_version is version('0.0.0', '>=')
+  retries: 10
+  when:
+    - prometheus_version == "latest"
+  tags:
+    - prometheus
+    - install
+    - prometheus_install
+    - download
+    - prometheus_download

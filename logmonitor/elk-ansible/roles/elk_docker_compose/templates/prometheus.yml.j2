@@ -1,0 +1,7 @@
+#jinja2: trim_blocks: True, lstrip_blocks: True
+global:
+  scrape_interval:     15s
+  evaluation_interval: 15s
+
+scrape_configs:
+  {{ prometheus_scrape_configs | to_nice_yaml(indent=2, width=1337, default_style='') | indent(width=2, first=false) }}

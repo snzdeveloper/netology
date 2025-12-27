@@ -1,0 +1,4 @@
+---
+filebeat_docker__data: /opt/filebeat
+filebeat_user_name: root
+filebeat_user_group: root

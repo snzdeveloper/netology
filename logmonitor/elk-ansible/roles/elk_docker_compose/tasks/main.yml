@@ -1,0 +1,39 @@
+# - name: Create Prometheus config
+#       - targets: ['nodeexporter:9100']
+#       - targets: ['192.168.56.103:9100']
+
+# - name: controlplanes
+#   debug:
+#     msg: "{{ item }}"
+#   loop: "{{ hostvars|dict2items|selectattr('value.all')|map(attribute='key') }}"
+- include_tasks: "preflight.yml"
+
+- name: "Deploy Prometheus config file"
+  template:
+    src: "prometheus.yml.j2"
+    dest: "{{ prometheus_docker__data }}/prometheus.yml"
+    owner: "{{ prometheus_user_name }}"
+    group: "{{ prometheus_user_group }}"
+    mode: 0644
+  become: true
+#  notify: "Restart prometheus"
+
+- name: Create Prometheus
+  become_user: "{{ prometheus_user_name }}"
+  docker_container:
+    name: prometheus
+    restart_policy: unless-stopped
+    image: prom/prometheus:v2.24.1
+    volumes:
+      - "{{ prometheus_docker__data }}:/etc/prometheus:Z"
+    command: >
+      --config.file=/etc/prometheus/prometheus.yml
+      --storage.tsdb.path=/prometheus
+      --web.console.libraries=/etc/prometheus/console_libraries
+      --web.console.templates=/etc/prometheus/consoles
+      --storage.tsdb.retention.time=200h
+      --web.enable-lifecycle
+    state: started
+    expose: 9090
+    published_ports: "9090:9090"
+
