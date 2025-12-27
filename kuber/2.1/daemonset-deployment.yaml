@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: syslogger
+  labels:
+    app: syslog-reader
+spec:
+  selector:
+    matchLabels:
+      app: syslog
+  template:
+    metadata:
+      labels:
+        app: syslog
+    spec:
+      containers:
+      - name: reader
+        image: wbitt/network-multitool
+        volumeMounts:
+        - name: varlog
+          mountPath: /var/run/kuber
+
+      volumes:
+      - name: varlog
+        hostPath:
+          path: /var/log

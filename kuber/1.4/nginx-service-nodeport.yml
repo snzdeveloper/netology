@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: nodeport-svc
+  namespace: default
+spec:
+  selector:
+    app: nginx
+  ports:
+    - name: nginx
+      protocol: TCP
+      nodePort: 31001
+      port: 80
+    - name: tools
+      protocol: TCP
+      nodePort: 31002
+      port: 1180
+  type: NodePort      

@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-multitool-deployment
+  labels:
+    app: nginx
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: writer
+        image: busybox
+        command: ['sh', '-c', 'while true; do echo "$(date)" >> /var/run/kuber/datetime; sleep 5; done;']
+        volumeMounts:
+        - name: vol
+          mountPath: /var/run/kuber
+
+      - name: reader
+        image: wbitt/network-multitool
+        env:
+          - name: HTTP_PORT
+            value: "1180"
+          - name: HTTPS_PORT
+            value: "11443"
+        volumeMounts:
+        - name: vol
+          mountPath: /var/run/kuber
+
+      volumes:
+      - name: vol
+        persistentVolumeClaim:
+          claimName: pvc-nfs
