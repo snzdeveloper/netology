@@ -128,3 +128,20 @@ microk8s helm3 install csi-driver-nfs csi-driver-nfs/csi-driver-nfs \
 ```sh
 microk8s kubectl wait pod --selector app.kubernetes.io/name=csi-driver-nfs --for condition=ready --namespace kube-system
 ```
+
+
+### ingress
+####https://cloud.vk.com/docs/on-premises/private-cloud/4_2/user-guide/k8s_main/k8s_network/k8s_network_ingress
+####https://wiki.merionet.ru/articles/rukovodstvo-po-kubernetes-ingress
+
+### tls
+```sh  
+ openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout tls.key -out tls.crt -subj "/CN=*.example.com/O=Example Org"
+
+ openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout tls.key -out tls.crt -subj "/CN=example.com/O=Example Org" -addext "subjectAltName = DNS:example.com, DNS:*.example.com"
+
+```
+
+```sh
+kubectl create secret tls testsecret-tls --cert=tls.crt --key=tls.key
+```
