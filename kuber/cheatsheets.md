@@ -145,3 +145,24 @@ microk8s kubectl wait pod --selector app.kubernetes.io/name=csi-driver-nfs --for
 ```sh
 kubectl create secret tls testsecret-tls --cert=tls.crt --key=tls.key
 ```
+
+### RBAC
+#### create user with certs
+```sh
+
+#create user cert
+openssl genrsa -out developer.key 2048
+openssl req -new -key developer.key -out developer.csr -subj "/CN=snzdeveloper"
+openssl x509 -req -in developer.csr -CA /var/snap/microk8s/current/certs/ca.crt -CAkey /var/snap/microk8s/current/certs/ca.key -CAcreateserial -out developer.crt -days 365
+
+#create user
+kubectl config set-credentials snzdeveloper --client-certificate=developer.crt --client-key=developer.key --embed-certs=true --cluster=microk8s-cluster
+kubectl config get-users
+
+#create context
+kubectl config set-context snzdeveloper --user=snzdeveloper --cluster=microk8s-cluster
+kubectl config get-contexts
+
+#use contect
+kubectl config use-context snzdeveloper
+```
