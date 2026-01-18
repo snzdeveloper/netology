@@ -133,6 +133,7 @@ microk8s kubectl wait pod --selector app.kubernetes.io/name=csi-driver-nfs --for
 ### ingress
 ####https://cloud.vk.com/docs/on-premises/private-cloud/4_2/user-guide/k8s_main/k8s_network/k8s_network_ingress
 ####https://wiki.merionet.ru/articles/rukovodstvo-po-kubernetes-ingress
+####https://kubernetes.github.io/ingress-nginx/examples/rewrite/
 
 ### tls
 ```sh  
@@ -166,3 +167,14 @@ kubectl config get-contexts
 #use contect
 kubectl config use-context snzdeveloper
 ```
+
+###https://clo.ru/help/containerization/installation/rke2
+
+
+### HELM
+###https://habr.com/ru/companies/dataart/articles/588258/
+
+### Networking
+###https://habr.com/ru/companies/T1Holding/articles/767056/
+###https://habr.com/ru/companies/slurm/articles/725324/
+###https://tech.aabouzaid.com/2022/08/2-ways-to-route-ingress-traffic-across-namespaces.html

@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: multitool-configmap
+data:
+ HTTP_PORT: "{{ .Values.multitool.http_port }}"
+ HTTPS_PORT: "{{ .Values.multitool.https_port }}"

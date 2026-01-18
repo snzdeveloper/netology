@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nginx-custom-index
+data:
+  index.html: |
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <title>Custom Nginx Page v{{ .Chart.AppVersion }} with Helm Chart v{{ .Chart.Version }}</title>
+    </head>
+    <body>
+        <h1>Welcome to Nginx on Kubernetes!</h1>
+        <div>This nginx page has been deployed with HELM chart</div>
+        <div>Namespace: {{ .Release.Namespace }}</div>
+    </body>
+    </html>

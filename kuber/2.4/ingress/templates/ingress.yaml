@@ -1,0 +1,37 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: minimal-ingress
+  namespace: ingress-nginx
+  annotations:
+    nginx.ingress.kubernetes.io/use-regex: "true"
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+spec:
+  ingressClassName: public #nginx
+  defaultBackend:
+    service:
+      name: frontend-svc
+      port:
+        number: {{ .Values.nginx.service.port }}
+  rules:
+  - host: "frontend.example.com"
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: default-frontend-svc
+            port:
+              number: {{ .Values.nginx.service.port }}
+      - path: /app(/|$)(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: app1-frontend-svc
+            port:
+              number: {{ .Values.nginx.service.port }}
+
+  tls:
+  - hosts: ["frontend.example.com"]
+    secretName: ingress-tls-secret
