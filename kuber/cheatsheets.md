@@ -178,3 +178,7 @@ kubectl config use-context snzdeveloper
 ###https://habr.com/ru/companies/T1Holding/articles/767056/
 ###https://habr.com/ru/companies/slurm/articles/725324/
 ###https://tech.aabouzaid.com/2022/08/2-ways-to-route-ingress-traffic-across-namespaces.html
+
+
+### Установка k8s
+###https://habr.com/ru/companies/slsoft/articles/897102/

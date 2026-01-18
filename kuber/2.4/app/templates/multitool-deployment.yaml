@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: multitool
+  name: multitool #-{{ .Release.Name }}
   labels:
     app: app-1
 spec:

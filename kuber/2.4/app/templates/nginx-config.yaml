@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: nginx-custom-index
+  name: nginx-custom-index #-{{ .Release.Name }}
 data:
   index.html: |
     <!DOCTYPE html>

@@ -1,9 +1,9 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nginx
+  name: nginx #-{{ .Release.Name }}
   labels:
-    app: nginx
+    app: nginx #-{{ .Release.Name }}
 spec:
   replicas: 1
   selector:
