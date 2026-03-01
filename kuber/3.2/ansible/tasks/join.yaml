@@ -1,0 +1,4 @@
+- name: Join worker nodes to the cluster
+  ansible.builtin.command: "{{ hostvars[groups['master'][0]]['join_command_output'] }}"
+  # Only run this on worker nodes
+  when: inventory_hostname in groups['worker']

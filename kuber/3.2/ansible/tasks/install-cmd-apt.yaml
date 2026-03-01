@@ -1,0 +1,22 @@
+- name: Add Kubernetes APT GPG key (example for Debian/Ubuntu)
+  ansible.builtin.apt_key:
+    url: https://pkgs.k8s.io
+    state: present
+
+- name: Add Kubernetes APT repository
+  ansible.builtin.apt_repository:
+    repo: deb https://pkgs.k8s.io /
+    state: present
+    filename: kubernetes
+
+- name: Install kubeadm, kubelet, and kubectl
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - kubelet
+    - kubeadm
+    - kubectl
+
+- name: Lock kubeadm packages to prevent upgrades
+  ansible.builtin.command: apt-mark hold kubelet kubeadm kubectl

@@ -1,0 +1,989 @@
+    1  sudo mount.nfs4 192.168.56.105:/srv/nfs /opt/nfs
+    2  sudo mount.nfs4 192.168.56.105: /opt/nfs
+    3  sudo mount.nfs4 192.168.56.105:/srv/nfs /opt/nfs
+    4  sudo mount.nfs4 192.168.56.105:/srv/nfs /opt/nfs -v
+    5  showmount 192.168.56.105
+    6  showmount -e 192.168.56.105
+    7  sudo mount.nfs4 192.168.56.105:/mnt /opt/nfs -v
+    8  sudo mount.nfs4 192.168.56.105:/run/archiso/cowspace/nfs /opt/nfs -v
+    9  sudo mount.nfs4 192.168.56.105:/nfs /opt/nfs -v
+   10  sudo mount.nfs4 192.168.56.105:/ /opt/nfs -v
+   11  showmount -e 192.168.56.105
+   12  sudo mount.nfs4 192.168.56.105:/ /opt/nfs -v
+   13  ls /opt/nfs/
+   14  sudo umount /opt/nfs 
+   15  sudo mount.nfs4 192.168.56.105:/ /opt/nfs -v
+   16  sudo mount.nfs4 192.168.56.105:/nfs /opt/nfs -v
+   17  showmount -e 192.168.56.105
+   18  sudo mount.nfs4 192.168.56.105:/mnt /opt/nfs -v
+   19  showmount -e 192.168.56.105
+   20  sudo mount.nfs4 192.168.56.105:/ /opt/nfs -v
+   21  ls /opt/nfs/
+   22  vim /opt/nfs/qwe 
+   23  sudo mount -o remount,rw /opt/nfs
+   24  vim /opt/nfs/qwe 
+   25  mount
+   26  echo "qweweqt6re" >> /opt/nfs/qwerty
+   27  ls -al /opt/nfs
+   28  echo "qweweqt" | sudo tee /opt/nfs/qwerty
+   29  ls -al /opt/nfs
+   30  showmount -e 192.168.56.105
+   31  ls -al /opt/nfs
+   32  showmount -e 192.168.56.105
+   33  findmnt 
+   34  sudo poweroff
+   35  showmount -e 192.168.56.105
+   36  mount
+   37  sudo mount.nfs4 192.168.56.105:/ /opt/nfs -v
+   38  showmount -e 192.168.56.105
+   39  ls /opt/nfs/
+   40  ls /opt/nfs/exfat/
+   41  ls /opt/nfs/
+   42  ls /opt/nfs/exfat/
+   43  ls -al /opt/nfs/exfat/
+   44  ls -al /opt/nfs
+   45  ls -al /opt/nfs/exfat/
+   46  showmount -e 192.168.56.105
+   47  sudo umount /opt/nfs
+   48  sudo mount.nfs4 192.168.56.105:/exfat /opt/nfs -v
+   49  showmount -e 192.168.56.105
+   50  ls -al /opt/nfs/exfat/
+   51  ls -al /opt/nfs/
+   52  echo "qweweqt" | sudo tee /opt/nfs/qwerty
+   53  ls -al /opt/nfs/
+   54  echo "qweweqt" | sudo tee /opt/nfs/qwertyui
+   55  ls -al /opt/nfs/
+   56  mount
+   57  umount /opt/nfs 
+   58  sudo umount /opt/nfs 
+   59  ls -al /opt/nfs/
+   60  sudo mount.nfs4 192.168.56.105:/exfat /opt/nfs -v
+   61  ls -al /opt/nfs/
+   62  sudo umount /opt/nfs
+   63  sudo mount.nfs4 192.168.56.105:/ /opt/nfs -v
+   64  ls -al /opt/nfs/
+   65  ls -al /opt/nfs/exfat/
+   66  showmount -e 192.168.56.105
+   67  mount
+   68  ls -al /opt/nfs/
+   69  ls -al /opt/nfs/exfat/
+   70  ls -al /opt/nfs/
+   71  ls -al /opt/nfs/exfat/
+   72  ls -al /opt/nfs/
+   73  ls -al /opt/nfs/exx
+   74  showmount -e 192.168.56.105
+   75  ls -al /opt/nfs
+   76  sudo umount /opt/nfs
+   77  ls -al /opt/nfs
+   78  sudo mount.nfs4 192.168.56.105:/ /opt/nfs -v
+   79  ls -al /opt/nfs
+   80  sudo umount /opt/nfs
+   81  sudo mount.nfs4 192.168.56.105:/ /opt/nfs -v
+   82  sudo umount /opt/nfs
+   83  sudo mount.nfs4 192.168.56.105:/ /opt/nfs -v
+   84  ls -al /opt/nfs
+   85  sudo umount /opt/nfs
+   86  sudo mount.nfs4 192.168.56.105:/ /opt/nfs -v
+   87  showmount -e 192.168.56.105
+   88  sudo umount /opt/nfs
+   89  sudo mount.nfs4 192.168.56.105:/ /opt/nfs -v
+   90  ls -al /opt/nfs/
+   91  ls -al /opt/nfs/hpl
+   92  ls -al /opt/nfs/
+   93  sudo umount /opt/nfs
+   94  sudo mount.nfs4 192.168.56.105:/ /opt/nfs -v
+   95  ls -al /opt/nfs/
+   96  sudo umount /opt/nfs
+   97  sudo mount.nfs4 192.168.56.105:/ /opt/nfs -v
+   98  ls -al /opt/nfs/
+   99  ls -al /opt/
+  100  ls -al /opt/nfs/
+  101  ls -al /opt/nfs/nfs/
+  102  ls -al /opt/nfs/nfs/exfat/
+  103  sudo umount /opt/nfs
+  104  sudo mount.nfs4 192.168.56.105:/ /opt/nfs -v
+  105  ls -al /opt/nfs/
+  106  ls -al /opt/nfs/nfs/
+  107  sudo umount /opt/nfs
+  108  sudo mount.nfs4 192.168.56.105:/ /opt/nfs -v
+  109  ls -al /opt/nfs/
+  110  ls -al /opt/nfs/nfs/
+  111  ls -al /opt/nfs/exfat/
+  112  sudo umount /opt/nfs
+  113  sudo mount.nfs4 192.168.56.105:/ /opt/nfs -v
+  114  ls -al /opt/nfs/exfat/
+  115  ls -al /opt/nfs/nfs/
+  116  sudo umount /opt/nfs
+  117  sudo mount.nfs4 192.168.56.105:/ /opt/nfs -v
+  118  ls -al /opt/nfs/
+  119  sudo poweroff
+  120  history 
+  121  mc
+  122  source /opt/intel/oneapi/setvars.sh 
+  123  mpirun -np 4 ./xhpl 
+  124  sudo dnf search ibverbs
+  125  sudo dnf install libibverbs-utils -y
+  126  sudo poweroff
+  127  pwd
+  128  rpmbuild -tb ./ice-2.3.15.tar.gz
+  129  sudo dnf search kernel-abi-stablelists
+  130  sudo dnf install kernel-abi-stablelists kernel-rpm-macros -y
+  131  openvpn3 session-start --config ~/client1.ovpn
+  132  sudo dnf install kernel-abi-stablelists kernel-rpm-macros -y
+  133  rpmbuild -tb ./ice-2.3.15.tar.gz
+  134  ls
+  135  sudo mokutil --help
+  136  sudo mokutil --import intel-public-key-ice-ko.rsa
+  137  sudo mokutil --delete intel-public-key-ice-ko.rsa
+  138  sudo mokutil --import intel-public-key-ice-ko.rsa
+  139  sudo mokutil --import intel-public-key-irdma-ko.rsa 
+  140  rpmbuild -tb ./irdma-2.0.34.tgz
+  141  rpmbuild -tb ./ice-2.3.15.tar.gz
+  142  rpmbuild -tb ./irdma-2.0.34.tgz
+  143  rpmbuild -tb ./ixgbe-6.2.6.tar.gz 
+  144  tar xvf irdma-2.0.34.tgz 
+  145  ./build.sh 
+  146  sudo ./build.sh 
+  147  history | grep repo
+  148  sudo dnf install createrepo
+  149  sudo cp * pwd
+  150  sudo cp * 
+  151  OA
+  152  createrepo /mnt/shares/RPMS/x86_64
+  153  uname -r
+  154  uname -a
+  155  rpmbuild --help
+  156  sudo lsmod
+  157  sudo modinfo ice
+  158  sudo systemctl status rdma
+  159  sudo systemctl list-units 
+  160  sudo systemctl list-units | grep rdma
+  161  sudo dnf search rdma
+  162  sudo dnf install rdma-core
+  163  openvpn3 session-start --config ~/client1.ovpn
+  164  sudo dnf install rdma-core
+  165  sudo kill -9 4225
+  166  sudo dnf install rdma-core
+  167  sudo kill -9 4225
+  168  sudo ps -ax
+  169  sudo kill -9 4225
+  170  sudo ps -ax
+  171  sudo kill -9 4225
+  172  sudo reboot
+  173  sudo dnf list installed
+  174  sudo dnf list installed | grep rdma
+  175  sudo dnf list installed | grep ice
+  176  ls /mnt/
+  177  ls /mnt/shares/
+  178  ls /mnt/shares/intel/
+  179  ls /mnt/shares/intel/RDMA/
+  180  ls /mnt/shares/intel/RDMA/Linux/
+  181  rpm -ivh /mnt/shares/intel/RDMA/Linux/kmod-irdma-2.0.34-1.rhel9u6.src.rpm 
+  182  sudo rpm -ivh /mnt/shares/intel/RDMA/Linux/kmod-irdma-2.0.34-1.rhel9u6.src.rpm 
+  183  ls -al .
+  184  ls -al rpmbuild/
+  185  ls -al /root/
+  186  sudo ls -al /root/
+  187  sudo ls -al /root/intel
+  188  sudo su
+  189  openvpn3 session-start --config ~/client1.ovpn
+  190  sudo dnf search nginx
+  191  sudo dnf install nginx
+  192  ip a
+  193  ls /mnt/shares/
+  194  sudo systemctl status nginx
+  195  sudo systemctl start nginx
+  196  sudo systemctl status nginx
+  197  sudo vim /etc/nginx/nginx.conf
+  198  ip a
+  199  wget --no-proxy http://192.168.56.103 -O-
+  200  sudo firewall-cmd --add-port=80 --permanent 
+  201  sudo firewall-cmd --add-protocol=http --permanent 
+  202  sudo firewall-cmd --add-protocol=tcp,udp --add-port=80 --permanent 
+  203  sudo firewall-cmd --add-port=80
+  204  sudo firewall-cmd --add-port=80/tcp
+  205  vim /etc/nginx/default.d/repos.conf
+  206  sudo vim /etc/nginx/default.d/repos.conf
+  207  sudo systemctl restart nginx.service 
+  208  journalctl -xeu nginx.service
+  209  sudo vim /etc/nginx/default.d/repos.conf
+  210  sudo systemctl restart nginx.service 
+  211  journalctl -xeu nginx.service
+  212  sudo vim /etc/nginx/default.d/repos.conf
+  213  sudo systemctl restart nginx.service 
+  214  sudo vim /etc/nginx/default.d/repos.conf
+  215  sudo systemctl restart nginx.service 
+  216  journalctl -xeu nginx.service
+  217  journalctl -xeuf nginx.service
+  218  journalctl -xefu nginx.service
+  219  tail -f /var/log/nginx/
+  220  sudo tail -f /var/log/nginx/
+  221  sudo ls /var/log/nginx/
+  222  sudo tail -f /var/log/nginx/error.log
+  223  sudo vim /etc/nginx/default.d/repos.conf
+  224  sudo systemctl restart nginx.service 
+  225  sudo tail -f /var/log/nginx/error.log
+  226  sudo vim /etc/nginx/default.d/repos.conf
+  227  sudo systemctl restart nginx.service 
+  228  sudo poweroff
+  229  sudo visudo
+  230  ip a
+  231  /mnt/shares/
+  232  ls /mnt/shares/
+  233  ls -al 
+  234  ls -al | grep conf
+  235  echo "user ALL=(ALL) NOPASSWD: ALL" | sudo tee -a /etc/sudoers.d/user
+  236  sudo ls /
+  237  sudo ls /etc/
+  238  ip a
+  239  nmcli dev mod enp0s9 
+  240  sudo nmcli dev mod enp0s8 ipv4.addresses 
+  241  sudo nmcli dev up enp0s8 
+  242  sudo systemctl status nginx.service 
+  243  sudo systemctl start nginx.service 
+  244  sudo systemctl status nginx.service 
+  245  sudo tail -f /var/log/nginx/error.log
+  246  sudo firewall-cmd --add-port=80 --permanent 
+  247  sudo firewall-cmd --add-port=80/tcp --permanent 
+  248  sudo systemctl stop firewalld.service 
+  249  sudo vim /etc/nginx/default.d/repos.conf
+  250  sudo systemctl restart nginx.service 
+  251  ls /opt/shares/rocky/
+  252  ls -al /opt/shares/rocky/
+  253  ls -al /opt/shares/iso/
+  254  sudo vim /etc/nginx/default.d/repos.conf
+  255  sudo systemctl restart nginx.service 
+  256  sudo tar vcfz nginx.tgz /etc/nginx
+  257  ls -al /etc/nginx
+  258  history | grep create
+  259  history | grep repo
+  260  history | grep only
+  261  sudo vim /etc/nginx/default.d/repos.conf
+  262  sudo poweroff
+  263  sudo nginx -t
+  264  sudo nginx --help
+  265  sudo nginx -
+  266  sudo nginx -h
+  267  sudo nginx -s reload
+  268  ping 192.168.56.105
+  269  showmount -e 192.168.56.105
+  270  ls /mnt/
+  271  ls /mnt/shares/
+  272  mkdir /mnt/nfs
+  273  sudo mkdir /mnt/nfs
+  274  sudo mount.nfs4 192.168.56.105:/ /mnt/nfs
+  275  showmount -e 192.168.56.105
+  276  sudo mount 192.168.56.105:/ /mnt/nfs
+  277  ls /mnt/nfs/
+  278  touch /mnt/nfs/qwe
+  279  ls -al /mnt/nfs
+  280  sudo mount -o remount,rw,user mnt/nfs
+  281  sudo mount -o remount,rw,user /mnt/nfs
+  282  showmount -e 192.168.56.105
+  283  ls -al /mnt/nfs
+  284  sudo mount.nfs4 -o rw,uid=1000 192.168.56.105:/ /mnt/nfs
+  285  sudo mount.nfs4 -o rw 192.168.56.105:/ /mnt/nfs
+  286  ls -al /mnt/nfs
+  287  touch /mnt/nfs/qwe
+  288  sudo mount.nfs4 -o rw,uid=1000,gid=1000 192.168.56.105:/ /mnt/nfs
+  289  touch /mnt/nfs/qwe
+  290  ls -al
+  291  ls -al /mnt/nfs/qwe
+  292  ls -al /mnt/nfs
+  293  sudo mount.nfs4 -o rw 192.168.56.105:/ /mnt/nfs
+  294  sudo poweroff
+  295  sudo journalctl -xef
+  296  openvpn3 session-start --config ~/client1.ovpn
+  297  docker run -d --rm --name my-nfs --cap-add SYS_ADMIN --cap-add DAC_READ_SEARCH -p 2049:2049 -p 111:111 -v /tmp/testvolme:/data -p 662:662 -p 38465:38465 -p 38466:38466 -p 38467:38467 izdock/nfs-ganesha
+  298  systemctl status nfs-client.target 
+  299  docker run -d --rm --name my-nfs --cap-add SYS_ADMIN --cap-add DAC_READ_SEARCH -p 2049:2049 -v /tmp/testvolme:/data -p 662:662 -p 38465:38465 -p 38466:38466 -p 38467:38467 izdock/nfs-ganesha
+  300  docker ps --all
+  301  docker run -d --name my-nfs --cap-add SYS_ADMIN --cap-add DAC_READ_SEARCH -p 2049:2049 -v /tmp/testvolme:/data -p 662:662 -p 38465:38465 -p 38466:38466 -p 38467:38467 izdock/nfs-ganesha
+  302  docker ps --all
+  303  docker logs my-nfs 
+  304  docker run -d --name my-nfs -p 2049:2049 -v /tmp/testvolme:/data -p 662:662 -p 38465:38465 -p 38466:38466 -p 38467:38467 izdock/nfs-ganesha
+  305  docker rm my-nfs 
+  306  docker run -d --name my-nfs -p 2049:2049 -v /tmp/testvolme:/data -p 662:662 -p 38465:38465 -p 38466:38466 -p 38467:38467 izdock/nfs-ganesha
+  307  docker logs my-nfs 
+  308  docker run -d --rm --name my-nfs --cap-add SYS_ADMIN --cap-add DAC_READ_SEARCH -p 2049:2049 -p 111:111 -v /tmp/testvolme:/data -p 662:662 -p 38465:38465 -p 38466:38466 -p 38467:38467 izdock/nfs-ganesha
+  309  docker rm my-nfs 
+  310  docker run -d --rm --name my-nfs --cap-add SYS_ADMIN --cap-add DAC_READ_SEARCH -p 2049:2049 -p 111:111 -v /tmp/testvolme:/data -p 662:662 -p 38465:38465 -p 38466:38466 -p 38467:38467 izdock/nfs-ganesha
+  311  docker ps --all
+  312  docker system prune 
+  313  docker ps --all
+  314  docker run -d --rm --name my-nfs --cap-add SYS_ADMIN --cap-add DAC_READ_SEARCH -p 2049:2049 -p 111:111 -v /tmp/testvolme:/data -p 662:662 -p 38465:38465 -p 38466:38466 -p 38467:38467 izdock/nfs-ganesha
+  315  docker ps --all
+  316  sudo ss -nlp | grep :111
+  317  docker run -d --rm --name my-nfs --cap-add SYS_ADMIN --cap-add DAC_READ_SEARCH -p 2049:2049 -p 1111:111 -v /tmp/testvolme:/data -p 662:662 -p 38465:38465 -p 38466:38466 -p 38467:38467 izdock/nfs-ganesha
+  318  docker ps --all
+  319  docker run -d --name my-nfs --cap-add SYS_ADMIN --cap-add DAC_READ_SEARCH -p 2049:2049 -p 1111:111 -v /tmp/testvolme:/data -p 662:662 -p 38465:38465 -p 38466:38466 -p 38467:38467 izdock/nfs-ganesha
+  320  docker ps --all
+  321  docker logs my-nfs 
+  322  rpcinfo -p
+  323  sudo systemctl stop nfs-kernel-server
+  324  sudo ss -nlp | grep :111
+  325  sudo systemctl stop rpcbind.service 
+  326  sudo systemctl stop rpcbind.socket 
+  327  sudo ss -nlp | grep :111
+  328  docker run -d --name my-nfs --cap-add SYS_ADMIN --cap-add DAC_READ_SEARCH -p 2049:2049 -p 111:111 -v /tmp/testvolme:/data -p 662:662 -p 38465:38465 -p 38466:38466 -p 38467:38467 izdock/nfs-ganesha
+  329  docker rm my-nfs 
+  330  docker run -d --name my-nfs --cap-add SYS_ADMIN --cap-add DAC_READ_SEARCH -p 2049:2049 -p 111:111 -v /tmp/testvolme:/data -p 662:662 -p 38465:38465 -p 38466:38466 -p 38467:38467 izdock/nfs-ganesha
+  331  docker logs my-nfs 
+  332  docker rm my-nfs 
+  333  docker run -d --name my-nfs --cap-add SYS_ADMIN --cap-add DAC_READ_SEARCH -p 2049:2049 -p 111:111 -v /tmp/testvolme:/data -p 662:662 -p 38465:38465 -p 38466:38466 -p 38467:38467 -e "TRANSPORTS=TCP" izdock/nfs-ganesha
+  334  docker logs my-nfs 
+  335  docker run -d --name my-nfs --cap-add SYS_ADMIN --cap-add DAC_READ_SEARCH -p 2049:2049 -p 111:111 -v /tmp/testvolme:/data -p 662:662 -p 38465:38465 -p 38466:38466 -p 38467:38467 -e "TRANSPORTS=TCP" -e "PSEUDO_PATH=/" -e "EXPORT_PATH=/data" izdock/nfs-ganesha
+  336  docker rm my-nfs 
+  337  docker run -d --name my-nfs --cap-add SYS_ADMIN --cap-add DAC_READ_SEARCH -p 2049:2049 -p 111:111 -v /tmp/testvolme:/data -p 662:662 -p 38465:38465 -p 38466:38466 -p 38467:38467 -e "TRANSPORTS=TCP" -e "PSEUDO_PATH=/" -e "EXPORT_PATH=/data" izdock/nfs-ganesha
+  338  docker logs my-nfs 
+  339  sudo poweroff
+  340  ip a
+  341  showmount 172.20.0.254
+  342  ls /mnt
+  343  mount -t nfs4 172.20.0.254:/ /mnt/nfs
+  344  sudo mount -t nfs4 172.20.0.254:/ /mnt/nfs
+  345  ls /mnt/nfs/
+  346  touch /mnt/nfs/qwe
+  347  touch /mnt/nfs/qwer
+  348  sudo mount 172.20.0.254:/ /mnt/nfs
+  349  ls /mnt/nfs/
+  350  touch /mnt/nfs/qwe
+  351  dnf search nfs
+  352  openvpn3 session-start --config ~/client1.ovpn
+  353  dnf search nfs
+  354  sudo kill -9 3422
+  355  dnf search nfs
+  356  sudo mount 172.20.0.254:/ /mnt/nfs
+  357  ls /mnt/nfs/
+  358  sudo umount /mnt/nfs/
+  359  sudo mount 172.20.0.12:/ /mnt/nfs
+  360  ls /mnt/nfs/
+  361  sudo umount /mnt/nfs
+  362  mount
+  363  sudo umount /mnt/nfs 
+  364  sudo mount 172.20.0.12:/ /mnt/nfs
+  365  ls /mnt/nfs/
+  366  touch /mnt/nfs/qwe
+  367  touch /mnt/nfs/qwerty
+  368  ls /mnt/nfs/
+  369  touch /mnt/nfs/qwertyq
+  370  sudo poweroff
+  371  openvpn3 session-start --config ~/client1.ovpn
+  372  dnf search ganesha
+  373  dnf search nfs
+  374  dnf search unfs
+  375  sudo poweroff
+  376  openvpn3 session-start --config ~/client1.ovpn
+  377  sudo curl -o /etc/yum.repos.d/mssql-server.repo https://packages.microsoft.com/config/rhel/9/mssql-server-2022.repo
+  378  sudo dnf install -y mssql-server
+  379  sudo /opt/mssql/bin/mssql-conf setup
+  380  sudo systemctl status mssql-server.service 
+  381  sudo dnf search cqlcmd
+  382  sudo systemctl status firewalld.service 
+  383  sudo systemctl stop firewalld.service 
+  384  findmnt 
+  385  sudo mount -t vboxsf shares /mnt/shares/
+  386  ls /mnt/shares/
+  387  mkdir /mnt/shares/mssqldb
+  388  ls -al /mnt/shares/
+  389  sudo umount /mnt/shares/
+  390  sudo mount -t vboxsf -o rw,uid=1000,gid=1000,fmask=0,dmask=0 shares /mnt/shares/
+  391  ls -al /mnt/shares/
+  392  mkdir /mnt/shares/mssqldb
+  393  ls -al /mnt/shares/
+  394  ls -al /mnt/shares/mssqldb/
+  395  chmod 777 /mnt/shares/mssqldb
+  396  ls -al /mnt/shares/mssqldb/
+  397  ls -al /mnt/shares/mssqldb/sales/
+  398  chmod -r 777 /mnt/shares/mssqldb
+  399  chmod 777 /mnt/shares/mssqldb/sales/
+  400  chmod -r 777 /mnt/shares/mssqldb
+  401  ls -al /mnt/shares/mssqldb/sales/
+  402  chmod -r 777 /mnt/shares/mssqldb
+  403  chmod 777 /mnt/shares/mssqldb
+  404  chmod 777 /mnt/shares/mssqldb/sales/
+  405  ls -al /mnt/shares/mssqldb/sales/
+  406  sudo umount /mnt/shares/
+  407  sudo mount -t vboxsf -o rw,uid=1000,gid=1000,fmask=0,dmask=0,dev,suid shares /mnt/shares/
+  408  ls -al /mnt/shares/mssqldb/sales/
+  409  rm /mnt/shares/mssqldb/sales/saledat.mdf 
+  410  id
+  411  usermod -aG vboxsf $(whoami)
+  412  sudo usermod -aG vboxsf $(whoami)
+  413  id
+  414  rm /mnt/shares/mssqldb/sales/saledat.mdf 
+  415  showmount
+  416  findmnt 
+  417  rm /mnt/shares/mssqldb/sales/saledat.mdf 
+  418  sudo umount /mnt/shares/
+  419  sudo mount -t vboxsf -o rw,uid=1000,gid=1000,fmask=0,dmask=0,nosuid,nodev,inode64 shares /mnt/shares/
+  420  sudo mount -t vboxsf -o rw,uid=1000,gid=1000,fmask=0,dmask=0,nosuid,nodev shares /mnt/shares/
+  421  sudo umount /mnt/shares/
+  422  sudo mount -t vboxsf -o rw,uid=1000,gid=1000,fmask=0,dmask=0,nosuid,nodev,cache=none shares /mnt/shares/
+  423  findmnt 
+  424  sudo umount /mnt/shares/
+  425  sudo mount -t vboxsf -o rw,uid=1000,gid=1000,fmask=0,dmask=0,nosuid,nodev,cache=none shares /mnt/shares/
+  426  findmnt 
+  427  ls -al /mnt/shares/mssqldb/sales/
+  428  sudo getent group 
+  429  i
+  430  iid
+  431  id
+  432  sudo usermod -aG vboxsf mssql
+  433  rm /mnt/shares/mssqldb/sales/saledat.mdf 
+  434  sudo journalctl -xeu mssql
+  435  :q
+  436  sudo journalctl -xe
+  437  sudo journalctl -xeu sqlserv
+  438  sudo journalctl -xeu sqlservr
+  439  sudo journalctl -xe
+  440  sudo journalctl -x
+  441  sudo usermod -aG wheel mssql
+  442  sudo journalctl -x
+  443  sudo reboot
+  444  ip a
+  445  sudo journalctl -xe
+  446  ls -al /mnt/shares/mssqldb/sales/
+  447  rm /mnt/shares/mssqldb/sales/saledat.mdf 
+  448  ls -al /mnt/shares/mssqldb/sales/
+  449  sudo systemctl stop firewalld.service 
+  450  systemctl status mssql-server.service 
+  451  rm /mnt/shares/mssqldb/sales/saledat.mdf 
+  452  sudo mount -t vboxsf -o rw,uid=vboxsf,gid=vboxsf,fmask=0,dmask=0,nosuid,nodev,cache=none shares /mnt/shares/
+  453  id
+  454  sudo mount -t vboxsf -o rw,uid=980,gid=980,fmask=0,dmask=0,nosuid,nodev,cache=none shares /mnt/shares/
+  455  sudo getent group 
+  456  sudo px -axu | grep sql
+  457  sudo ps -axu | grep sql
+  458  ls /media/
+  459  ls -al /media/
+  460  curl http://192.168.56.105/
+  461  curl -X POST   -H "Content-Type: application/json"   -d '{ "title":"foo", "body":"bar", "userId": 1 }' http://192.168.56.105/
+  462  curl -X POST -H "Content-Type: application/json" -d '{ "title":"foo", "body":"bar", "userId": 1 }' http://192.168.56.105/
+  463  curl --header "Content-Type: application/json"   --request POST   --data '{"username":"xyz","password":"xyz"}' http://192.168.56.105/qwe
+  464  curl --header "Content-Type: application/json"   --request GET   --data '{"username":"xyz","password":"xyz"}' http://192.168.56.105/qwe
+  465  curl --request GET http://192.168.56.105/qwe
+  466  curl --header "Content-Type: application/json"   --request GET   --data '{"username":"xyz","password":"xyz"}' http://192.168.56.105/qwe
+  467  curl -H "Content-Type: application/json"   -X GET   -d '{"username":"xyz","password":"xyz"}' http://192.168.56.105/qwe
+  468  curl -H "Content-Type: application/json"   -X POST   -d '{"username":"xyz","password":"xyz"}' http://192.168.56.105/qwe
+  469  sudo umount /mnt/shares/
+  470  ls /mnt/shares/
+  471  ls /mnt/shares/mssqldb/
+  472  ls /mnt/shares/mssqldb/sales/
+  473  ls -al /mnt/shares/
+  474  sudo umount /mnt/shares/
+  475  ls -al /mnt/shares/
+  476  chown -R root:vboxsf /mnt/shares
+  477  sudo chown -R root:vboxsf /mnt/shares
+  478  ls -al /mnt/shares/
+  479  mkdir -p /mnt/shares/mssqldb/sales
+  480  ls -al /mnt
+  481  id
+  482  chmod 776 /mnt/shares
+  483  sudo chmod 776 /mnt/shares
+  484  ls -al /mnt
+  485  sudo chmod 775 /mnt/shares
+  486  ls -al /mnt
+  487  sudo systemctl stop mssql-server.service 
+  488  tar vcf /mnt/mssqldb.tar /mnt/shares/mssqldb
+  489  sudo tar vcf /mnt/mssqldb.tar /mnt/shares/mssqldb
+  490  sudo mount -t vboxsf -o rw,uid=980,gid=980,fmask=0,dmask=0,nosuid,nodev,cache=none shares /mnt/shares/
+  491  ls -al /mnt
+  492  ls -al /mnt/shares/
+  493  getent user
+  494  getent users
+  495  sudo cat /etc/shadow
+  496  sudo cat /etc/passwd
+  497  sudo umount /mnt/shares/
+  498  sudo mount -t vboxsf -o rw,uid=972,gid=980,fmask=0,dmask=0,nosuid,nodev,cache=none shares /mnt/shares/
+  499  ls -al /mnt/shares/
+  500  sudo umount /mnt/shares/
+  501  ls -al /mnt/shares/
+  502  sudo umount /mnt/shares/
+  503  sudo mount -t vboxsf -o rw,uid=1000,gid=980,fmask=0,dmask=0,nosuid,nodev,cache=none shares /mnt/shares/
+  504  ls -al /mnt/shares/
+  505  tar vxf /mnt/mssqldb.tar 
+  506  ls /mnt/shares/mssqldb/
+  507  ls /mnt/shares/mssqldb/sales/
+  508  ls mnt/shares/mssqldb/sales/
+  509  mv mnt/* /mnt
+  510  mv mnt/shares/* /mnt/shares/
+  511  mv mnt/shares/mssqldb/* /mnt/shares/mssqldb/
+  512  rm -rf mnt
+  513  ls /mnt/shares/mssqldb/sales/
+  514  ls -al /mnt/shares/mssqldb/sales/
+  515  chmod 775 /mnt/shares/mssqldb
+  516  ls -al /mnt/shares/mssqldb/sales/
+  517  chmod --help
+  518  chmod -R 775 /mnt/shares/mssqldb
+  519  ls -al /mnt/shares/mssqldb/sales/
+  520  sudo systemctl start mssql-server.service 
+  521  journalctl -xef
+  522  sudo systemctl status mssql-server.service 
+  523  tail -f /var/log/messages
+  524  sudo tail -f /var/log/messages
+  525  sudo systemctl stop mssql-server.service 
+  526  sudo umount /mnt/shares/
+  527  sudo systemctl start mssql-server.service 
+  528  sudo tail -f /var/log/messages
+  529  firewall-cmd --help
+  530  firewall-cmd --list-all
+  531  sudo firewall-cmd --list-all
+  532  sudo systemctl start firewalld.service 
+  533  sudo firewall-cmd --list-all
+  534  sudo firewall-cmd --add-port=1433/tcp
+  535  sudo firewall-cmd --list-all
+  536  sudo poweroff
+  537  openvpn3 session-start --config ~/client1.ovpn
+  538  dnf search containerd
+  539  dnf search cri-docker
+  540  dnf search cri
+  541  dnf search docker
+  542  dnf search cri-o
+  543  sudo swapoff -a
+  544  nc 127.0.0.1 6443 -zv -w 2
+  545  sudo nc 127.0.0.1 6443 -zv -w 2
+  546  dnf search containerd --help
+  547  dnf search containerd -by
+  548  dnf info containerd
+  549  sudo dnf install containerd -y
+  550  sudo dnf install containerd-2.2.0-3.el9.x86_64 -y
+  551  sudo dnf install containerd-2.2.0-3.el9.x86_64 -y --allowerasing 
+  552  uname -r
+  553  sudo dnf update
+  554  sudo dnf upgrade-to 
+  555  sudo dnf update --help
+  556  sudo dnf upgrade --releasever 
+  557  dnf search kernel-lts
+  558  sudo dnf search kernel-lts
+  559  sudo dnf install rocky-release-kernel
+  560  sudo vim /etc/yum.repos.d/rocky.repo 
+  561  dnf search kernel-lts
+  562  sudo dnf install rocky-release-kernel
+  563  sudo rpm --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org
+  564  sudo dnf install https://www.elrepo.org/elrepo-release-9.el9.elrepo.noarch.rpm
+  565  sudo dnf --enablerepo=elrepo-kernel install kernel-lt
+  566  sudo reboot
+  567  sudo dnf update
+  568  sudo dnf upgrade
+  569  sudo setenforce 0
+  570  sudo sed -i 's/^SELINUX=enforcing$/SELINUX=permissive/' /etc/selinux/config
+  571  cat <<EOF | sudo tee /etc/yum.repos.d/kubernetes.repo
+  572  [kubernetes]
+  573  name=Kubernetes
+  574  baseurl=https://pkgs.k8s.io/core:/stable:/v1.35/rpm/
+  575  enabled=1
+  576  gpgcheck=1
+  577  gpgkey=https://pkgs.k8s.io/core:/stable:/v1.35/rpm/repodata/repomd.xml.key
+  578  exclude=kubelet kubeadm kubectl cri-tools kubernetes-cni
+  579  EOF
+  580  sudo yum install -y kubelet kubeadm kubectl --disableexcludes=kubernetes
+  581  openvpn3 session-start --config ~/client1.ovpn
+  582  sudo yum install -y kubelet kubeadm kubectl --disableexcludes=kubernetes
+  583  sudo kill 3321
+  584  sudo yum install -y kubelet kubeadm kubectl --disableexcludes=kubernetes
+  585  sudo kill 
+  586  sudo yum install -y kubelet kubeadm kubectl --disableexcludes=kubernetes
+  587  sudo dnf install -y kubelet kubeadm kubectl --disableexcludes=kubernetes
+  588  sudo yum install -y kubelet kubeadm kubectl --setopt=disable_excludes=kubernetes
+  589  px -axfu | grep 3321
+  590  ps -axfu | grep 3321
+  591  sudo kill -9 3321
+  592  ps -axfu | grep 3321
+  593  sudo kill -9 3321
+  594  ps -axfu | grep 3321
+  595  sudo kill -9 3321
+  596  ps -axfu | grep 3321
+  597  sudo yum install -y kubelet kubeadm kubectl --setopt=disable_excludes=kubernetes
+  598  sudo reboot
+  599  sudo dnf remove kernel-lt
+  600  openvpn3 session-start --config ~/client1.ovpn
+  601  sudo yum install -y kubelet kubeadm kubectl --setopt=disable_excludes=kubernetes
+  602  sudo systemctl enable --now kubelet
+  603  history
+  604  cat <<EOF | tee kubeadm-config.yaml
+  605  # kubeadm-config.yaml
+  606  kind: ClusterConfiguration
+  607  apiVersion: kubeadm.k8s.io/v1beta4
+  608  kubernetesVersion: v1.21.0
+  609  ---
+  610  kind: KubeletConfiguration
+  611  apiVersion: kubelet.config.k8s.io/v1beta1
+  612  cgroupDriver: systemd
+  613  EOF
+  614  ubeadm init --config kubeadm-config.yaml
+  615  kubeadm init --config kubeadm-config.yaml
+  616  vim kubeadm-config.yaml 
+  617  kubeadm init --config kubeadm-config.yaml
+  618  sudo kubeadm init --config kubeadm-config.yaml
+  619  sudo firewall-cmd 
+  620  sudo firewall-cmd --help
+  621  sudo firewall-cmd --add-port=6443 --add-port=10250
+  622  sudo firewall-cmd --add-port=6443
+  623  sudo firewall-cmd --add-port=6443/tcp --add-port=10250/tcp
+  624  sudo firewall-cmd --add-port=6443/udp --add-port=10250/udp
+  625  sudo dnf upgrade --refresh
+  626  sudo reboot
+  627  uname -a
+  628  openvpn3 session-start --config ~/client1.ovpn
+  629  sudo dnf --enablerepo=elrepo-kernel install kernel-lt
+  630  sudo reboot
+  631  uname -a
+  632  sudo reboot
+  633  sudo vim /etc/fstab 
+  634  sudo reboot
+  635  uname -a
+  636  sudo grubby 
+  637  sudo grubby --help
+  638  sudo grubby --set-default-index=0
+  639  lsblk
+  640  mount
+  641  cd /run/media/user/VBox_GAs_7.2.0
+  642  sudo dnf search kernel-headers
+  643  sudo dnf info kernel-h
+  644  sudo dnf search kernel-lt
+  645  sudo dnf --enablerepo=elrepo-kernel install kernel-lt-headers
+  646  openvpn3 session-start --config ~/client1.ovpn
+  647  sudo dnf --enablerepo=elrepo-kernel install kernel-lt-headers kernel-lt-devel
+  648  sudo ./VBoxLinuxAdditions.run 
+  649  dmesg
+  650  sudo reboot
+  651  dmesg
+  652  sudo poweroff
+  653  dmesg
+  654  openvpn3 session-start --config ~/client1.ovpn
+  655  mount
+  656  /run/media/user/VBox_GAs_7.2.0
+  657  sudo /run/media/user/VBox_GAs_7.2.0/VBoxLinuxAdditions.run 
+  658  tail /var/log/vboxadd-setup.log
+  659  tail /var/log/vboxadd-install.log 
+  660  sudo tail /var/log/vboxadd-install.log 
+  661  sudo dnf --enablerepo=elrepo-kernel install kernel-lt-headers kernel-lt-devel
+  662  openvpn3 session-start --config ~/client1.ovpn
+  663  ip a
+  664  sudo dnf --enablerepo=elrepo-kernel install kernel-lt-headers kernel-lt-devel
+  665  sudo /run/media/user/VBox_GAs_7.2.0/VBoxLinuxAdditions.run 
+  666  sudo /run/media/user/VBox_GAs_7.2.0/VBoxLinuxAdditions.run --help
+  667  sudo /run/media/user/VBox_GAs_7.2.0/VBoxLinuxAdditions.run --info
+  668  sudo dnf install autoconf make gcc g++ perl
+  669  sudo dnf install autoconf make gcc g++
+  670  test -d /lib/modules/`uname -r`/build
+  671  sudo ls /lib/modules/6.1.161-1.el9.elrepo.x86_64/build 
+  672  sudo ls -al /lib/modules/6.1.161-1.el9.elrepo.x86_64/build 
+  673  uname -r
+  674  sudo ls -al /lib/modules/$(uname -r)/build 
+  675  sudo dnf install kernel-devel-`uname -r`
+  676  sudo dnf install kernel-lt-devel-`uname -r`
+  677  sudo dnf --enablerepo=elrepo-kernel install kernel-lt-devel-`uname -r`
+  678  sudo /run/media/user/VBox_GAs_7.2.0/VBoxLinuxAdditions.run --info
+  679  sudo /run/media/user/VBox_GAs_7.2.0/VBoxLinuxAdditions.run
+  680  sudo vim /etc/fstab 
+  681  sudo reboot
+  682  uname -a
+  683  ls /mnt/shares/
+  684  ls -al /mnt/shares/
+  685  sudo poweroff
+  686  history 
+  687  sudo dnf --enablerepo=elrepo-kernel install kernel-lt-devel-`uname -r`
+  688  sudo ls -al /lib/modules/$(uname -r)/build
+  689  openvpn3 session-start --config ~/client1.ovpn
+  690  sudo ls -al /lib/modules/$(uname -r)/build
+  691  openvpn3 session-start --config ~/client1.ovpn
+  692  sudo dnf --enablerepo=elrepo-kernel install kernel-lt-devel-`uname -r`
+  693  history >/mnt/shares/hist.0.rl9.txt
+  694  history | grep grubb
+  695  ip a
+  696  openvpn3 session-stop
+  697  openvpn3 session-stats
+  698  openvpn3 session-stats --interface=tun1
+  699  openvpn3 session-manage --disconnect  --interface=tun1
+  700  ip a
+  701  systemctl status network.service 
+  702  systemctl status NetworkManager.service 
+  703  sudo dnf --enablerepo=elrepo-kernel reinstall kernel-lt-devel-`uname -r`
+  704  sudo rpm -qa kernel
+  705  sudo rpm -qa kernel-lt
+  706  uname -a
+  707  dnf list installed kernel
+  708  dnf list installed kernel-lt-
+  709  dnf list installed kernel-lt
+  710  dnf list installed kernel*
+  711  sudo ls -al /lib/modules/$(uname -r)/build
+  712  sudo ls -al /lib/modules/
+  713  sudo dnf search keepalived
+  714  sudo dnf install keepalived haproxy -y
+  715  sudo poweroff
+  716  ip a
+  717  sudo dnf search containerd
+  718  sudo dnf search containerd -v
+  719  sudo sysctl --help
+  720  sudo sysctl -p
+  721  ip a
+  722  uname -r
+  723  sudo poweroff
+  724  ip route show
+  725  ip a
+  726  nmcli connection add ipv4.addresses 192.168.55.11 connection.type ethernet
+  727  nmcli con add con-name "static" ifname enp0s9 type ethernet ip4 172.30.120.44/24 gw4 172.30.120.1
+  728  sudo nmcli con add con-name "static" ifname enp0s9 type ethernet ip4 172.30.120.44/24 gw4 172.30.120.1
+  729  ip a
+  730  lsmod | grep br_netfilter
+  731  echo 1 > /proc/sys/net/ipv4/ip_forward
+  732  sed -i s/'^#net.ipv4.ip_forward=1'/'net.ipv4.ip_forward=1'/g /etc/sysctl.conf
+  733  sysctl -p
+  734  echo 1 > /proc/sys/net/ipv4/ip_forward
+  735  echo 1 | tee /proc/sys/net/ipv4/ip_forward
+  736  echo 1 | sudo tee /proc/sys/net/ipv4/ip_forward
+  737  sudo sed -i s/'^#net.ipv4.ip_forward=1'/'net.ipv4.ip_forward=1'/g /etc/sysctl.conf
+  738  sysctl -p
+  739  sudo sysctl -p
+  740  cat <<EOF | tee /etc/modules-load.d/k8s.conf
+  741  overlay
+  742  br_netfilter
+  743  EOF
+  744  cat <<EOF | sudo tee /etc/modules-load.d/k8s.conf
+  745  overlay
+  746  br_netfilter
+  747  EOF
+  748  cat /etc/modules-load.d/k8s.conf 
+  749  modprobe overlay
+  750  modprobe br_netfilter
+  751  sudo modprobe br_netfilter
+  752  sudo modprobe overlay
+  753  lsmod | grep br_netfilter
+  754  lsmod | grep overlay
+  755  echo -e "net.bridge.bridge-nf-call-ip6tables = 1\nnet.bridge.bridge-nf-call-iptables = 1\nnet.ipv4.ip_forward = 1" | sudo tee /etc/sysctl.d/10-k8s.conf
+  756  sudo sysctl -f /etc/sysctl.d/10-k8s.conf
+  757  sysctl net.bridge.bridge-nf-call-iptables net.bridge.bridge-nf-call-ip6tables net.ipv4.ip_forward
+  758  swapoff -a
+  759  sudo swapoff -a
+  760  sudo sed -i '/ swap / s/^/#/' /etc/fstab
+  761  sudo swapon -s
+  762  ip a
+  763  sudo nmcli con mod static ip4 172.30.120.11/24 gw4 172.30.120.1
+  764  ip a
+  765  nmcli connection 
+  766  nmcli connection show static 
+  767  sudo nmcli con mod static 
+  768  sudo nmcli con mod static ipv4.addresses="172.30.120.11/24"
+  769  sudo nmcli con mod static ipv4.addresses "172.30.120.11/24"
+  770  nmcli connection show static 
+  771  ip a
+  772  nmcli connection up static 
+  773  sudo nmcli connection up static 
+  774  ip a
+  775  sudo nmcli con mod static ipv4.addresses "172.30.120.201/24"
+  776  sudo nmcli connection up static 
+  777  ip a
+  778  sudo nmcli connection
+  779  cat <<EOF | sudo tee /etc/hosts
+  780  127.0.0.1       localhost
+  781  # The following lines are desirable for IPv6 capable hosts
+  782  ::1     localhost ip6-localhost ip6-loopback
+  783  ff02::1 ip6-allnodes
+  784  ff02::2 ip6-allrouters
+  785  # Cluster nodes
+  786  172.30.0.201 node1.internal
+  787  172.30.0.202 node2.internal
+  788  172.30.0.203 node3.internal
+  789  172.30.0.204 node4.internal
+  790  172.30.0.205 node5.internal
+  791  EOF
+  792  cat /etc/hosts 
+  793  ping node1.internal
+  794  ip a
+  795  sudo nmcli con mod static ipv4.addresses "172.30.0.201/24"
+  796  ping node1.internal
+  797  sudo nmcli connection up static 
+  798  ping node1.internal
+  799  cat <<EOF | sudo tee /etc/hosts
+  800  127.0.0.1       localhost
+  801  # The following lines are desirable for IPv6 capable hosts
+  802  ::1     localhost ip6-localhost ip6-loopback
+  803  ff02::1 ip6-allnodes
+  804  ff02::2 ip6-allrouters
+  805  # Cluster nodes
+  806  172.30.120.201 node1.internal
+  807  172.30.120.202 node2.internal
+  808  172.30.120.203 node3.internal
+  809  172.30.120.204 node4.internal
+  810  172.30.120.205 node5.internal
+  811  EOF
+  812  sudo nmcli con mod static ipv4.addresses "172.30.120.201/24"
+  813  sudo nmcli connection up static 
+  814  ip a
+  815  ls /etc/yum.repos.d/
+  816  sudo systemctl status kubelet.service 
+  817  sudo systemctl restart kubelet.service 
+  818  sudo systemctl status kubelet.service 
+  819  sudo mkdir /etc/containerd/
+  820  cat /etc/containerd/config.toml
+  821  sudo containerd config default
+  822  cat /etc/containerd/config.toml
+  823  sudo containerd config default
+  824  sudo containerd config default | sudo tee /etc/containerd/config.toml 
+  825  systemctl status containerd
+  826  systemctl status containerd.service 
+  827  openvpn3 session-manage --disconnect  --interface=tun1
+  828  openvpn3 session-start --config ~/client1.ovpn
+  829  wget https://github.com/opencontainers/runc/releases/download/v1.4.0/runc.amd64
+  830  install -m 755 runc.amd64 /usr/local/sbin/runc
+  831  rm runc.amd64
+  832  sudo install -m 755 runc.amd64 /usr/local/sbin/runc
+  833  wget https://github.com/opencontainers/runc/releases/download/v1.4.0/runc.amd64
+  834  sudo install -m 755 runc.amd64 /usr/local/sbin/runc
+  835  rm runc.amd64
+  836  wget https://github.com/containernetworking/plugins/releases/download/v1.9.0/cni-plugins-linux-amd64-v1.9.0.tgz
+  837  sudo mkdir -p /opt/cni/bin
+  838  tar Cxzvf /opt/cni/bin cni-plugins-linux-amd64-v1.9.0.tgz
+  839  sudo tar Cxzvf /opt/cni/bin cni-plugins-linux-amd64-v1.9.0.tgz
+  840  rm cni-plugins-linux-amd64-v1.9.0.tgz
+  841  ls /opt/cni/bin/
+  842  sudo systemctl daemon-reload
+  843  sudo systemctl enable --now containerd
+  844  history 
+  845  cat << _EOF | sudo tee /etc/crictl.yaml
+  846  runtime-endpoint: unix:///var/run/containerd/containerd.sock
+  847  _EOF
+  848  ls /etc/crictl.yaml 
+  849  cat /etc/crictl.yaml 
+  850  crictl --runtime-endpoint unix:///var/run/containerd/containerd.sock version
+  851  sudo crictl --runtime-endpoint unix:///var/run/containerd/containerd.sock version
+  852  ctr images pull docker.io/library/hello-world:latest
+  853  sudo ctr images pull docker.io/library/hello-world:latest
+  854  ctr run docker.io/library/hello-world:latest hello-world
+  855  sudo ctr run docker.io/library/hello-world:latest hello-world
+  856  sudo poweroff
+  857  sudo kubeadm --help
+  858  sudo kubeadm version
+  859  sudo kubeadm kubeconfig
+  860  sudo modinfo | grep overlay
+  861  lsmod | grep overlay
+  862  lsmod | grep br
+  863  sysctl net.bridge.bridge-nf-call-iptables net.bridge.bridge-nf-call-ip6tables net.ipv4.ip_forward
+  864  crictl --runtime-endpoint unix:///var/run/containerd/containerd.sock version
+  865  sudo crictl --runtime-endpoint unix:///var/run/containerd/containerd.sock version
+  866  cat /etc/environment
+  867  sudo cat /etc/environment
+  868  echo "export KUBECONFIG=/etc/kubernetes/admin.conf" > /etc/environment
+  869  echo "export KUBECONFIG=/etc/kubernetes/admin.conf" | sudo tee -a /etc/environment
+  870  export KUBECONFIG=/etc/kubernetes/admin.conf
+  871  sudo export KUBECONFIG=/etc/kubernetes/admin.conf
+  872  ip a
+  873  kubeadm init --pod-network-cidr=172.16.0.0/12 --control-plane-endpoint "192.168.56.103:6443" --upload-certs
+  874  openvpn3 session-start --config ~/client1.ovpn
+  875  kubeadm init --pod-network-cidr=172.16.0.0/12 --control-plane-endpoint "192.168.56.103:6443" --upload-certs
+  876  sudo kubeadm init --pod-network-cidr=172.16.0.0/12 --control-plane-endpoint "192.168.56.103:6443" --upload-certs
+  877  ip a
+  878  sudo kubeadm init --pod-network-cidr=172.16.0.0/12 --control-plane-endpoint "172.30.120.201:6443" --upload-certs
+  879  sudo kubeadm --help
+  880  sudo kubeadm config --help
+  881  sudo kubeadm config print
+  882  mcsudo kubeadm config print
+  883  mc
+  884  sudo mc
+  885  sudo su
+  886  sudo systemctl status kubelet.service 
+  887  sudo kubeadm init --pod-network-cidr=172.16.0.0/12 --control-plane-endpoint "172.30.120.201:6443" --upload-certs
+  888  openvpn3 session-start --config ~/client1.ovpn
+  889  sudo kubeadm init --pod-network-cidr=172.16.0.0/12 --control-plane-endpoint "172.30.120.201:6443" --upload-certs
+  890  sudo kubeadm --help
+  891  sudo kubeadm reset
+  892  sudo kubeadm init --pod-network-cidr=172.16.0.0/12 --control-plane-endpoint "172.30.120.201:6443" --upload-certs
+  893    mkdir -p $HOME/.kube
+  894    sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+  895    sudo chown $(id -u):$(id -g) $HOME/.kube/config
+  896  kubectl --help
+  897  kubectl status
+  898  kubectl version
+  899  kubectl status
+  900  kubectl version
+  901  export KUBECONFIG=~/.kube/config 
+  902  kubectl version
+  903  kubectl get pods
+  904  curl -fsSL https://raw.githubusercontent.com/projectcalico/calico/<version>/manifests/tigera-operator.yaml
+  905  curl -f https://raw.githubusercontent.com/projectcalico/calico/<version>/manifests/tigera-operator.yaml
+  906  curl -fsSL https://raw.githubusercontent.com/projectcalico/calico/3.31.3/manifests/tigera-operator.yaml
+  907  curl -f https://raw.githubusercontent.com/projectcalico/calico/3.31.3/manifests/tigera-operator.yaml
+  908  curl -f https://raw.githubusercontent.com/projectcalico/calico/v3.31.3/manifests/tigera-operator.yaml
+  909  curl https://raw.githubusercontent.com/projectcalico/calico/v3.31.3/manifests/tigera-operator.yaml
+  910  curl https://raw.githubusercontent.com/projectcalico/calico/v3.31.3/manifests/tigera-operator.yaml -O
+  911  grep -E '192.168.0.0' ./tigera-operator.yaml 
+  912  grep -E '192.168' ./tigera-operator.yaml 
+  913  grep '192.168' ./tigera-operator.yaml 
+  914  curl https://raw.githubusercontent.com/projectcalico/calico/v3.31.3/manifests/calico.yaml -O
+  915  grep '192.168' ./calico.yaml 
+  916  vim calico.yaml 
+  917  kubectl apply -f calico.yaml
+  918  kubectl get pods
+  919  kubectl get pods -A
+  920  sudo poweroff
+  921  openvpn3 session-start --config ~/client1.ovpn
+  922  kubectl get pods -A
+  923  vim /etc/environment
+  924  sudo vim /etc/environment
+  925  kubectl get pods -A
+  926  export KUBECONFIG=~/.kube/config 
+  927  kubectl get pods -A
+  928  kubectl complition bash
+  929  kubectl --help
+  930  kubectl completion
+  931  kubectl completion -h
+  932  kubectl completion bash
+  933  echo 'source $(kubectl completion bash)'>>~/.bashrc
+  934  vim .bashrc 
+  935  source | $(kubectl completion bash)
+  936  source --help
+  937  source - | $(kubectl completion bash)
+  938  man kubectl
+  939  kubectl completion -h
+  940  vim .bashrc 
+  941  kubectl get pods -A
+  942  kubectl get pods
+  943  echo "export KUBECONFIG=/etc/kubernetes/admin.conf" | sudo tee /etc/environment
+  944  ls -al ~/.kube/config 
+  945  export KUBECONFIG=~/.kube/config
+  946  kubectl get pods
+  947  kubectl get pods -A
+  948  kubectl logs pods/calico-kube-controllers-565c89d6df-4h458
+  949  kubectl logs pods/calico-kube-controllers-565c89d6df-4h458 -n kube-system 
+  950  kubectl cluster-info dump | grep -m 1 cluster-cidr
+  951  curl https://raw.githubusercontent.com/projectcalico/calico/v3.31.3/manifests/custom-resources.yaml -O
+  952  vim custom-resources.yaml 
+  953  kubectl apply -f custom-resources.yaml
+  954  vim custom-resources.yaml 
+  955  kubectl apply -f custom-resources.yaml -n kube-system 
+  956  vim calico.yaml 
+  957  kubectl apply -f calico.yaml 
+  958  kubectl cluster-info dump | grep -m 1 cluster-cidr
+  959  kubectl get pods -A
+  960  kubectl get nodes 
+  961  kubectl describe pods calico-kube-controllers-565c89d6df-4h458 -n kube-system
+  962  kubectl taint nodes --all
+  963  kubectl describe nodes node1.internal 
+  964  history >hist.k8s.0.txt
+  965  kubectl get pods -A
+  966  kubectl describe pods coredns-7d764666f9-9qm5f
+  967  kubectl describe pods coredns-7d764666f9-9qm5f -n kube-system 
+  968  kubectl taint nodes node1.internal node-role.kubernetes.io/control-plane:NoSchedule
+  969  kubectl taint nodes node1.internal
+  970  kubectl taint -h
+  971  kubectl get pods -n calico-system
+  972  kubectl taint nodes --all node-role.kubernetes.io/control-plane-
+  973  kubectl get pods -n calico-system
+  974  kubectl get pods -A
+  975  kubeadm --help
+  976  kubectl describe pods coredns-7d764666f9-9qm5f -n kube-system 
+  977  kubectl delete pods coredns-7d764666f9-9qm5f -n kube-system 
+  978  kubectl get pods -A
+  979  kubectl -n kube-system delete pod/calico-kube-controllers-565c89d6df-4h458 
+  980  kubectl get pods -A
+  981  kubectl -n kube-system describe pods calico-kube-controllers-565c89d6df-464gt 
+  982  kubectl taint nodes --help
+  983  kubectl describe nodes node1.internal 
+  984  kubectl taint nodes --all node.kubernetes.io/disk-pressure:NoSchedule
+  985  kubectl taint nodes --all node.kubernetes.io/disk-pressure:NoSchedule-
+  986  kubectl describe nodes node1.internal 
+  987  kubectl get pods -A
+  988  sudo poweroff
+  989  history >hist.k8s.1.txt

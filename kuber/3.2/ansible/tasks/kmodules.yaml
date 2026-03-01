@@ -1,0 +1,16 @@
+- name: Add containerd module
+  lineinfile:
+    dest: /etc/modules-load.d/k8s.conf
+    line: '{{ item }}'
+    create: yes
+  with_items:
+  - overlay
+  - br_netfilter
+
+- name: load-containerd-modules
+  community.general.modprobe:
+    name: "{{ item }}"
+    state: present
+  with_items:
+  - overlay
+  - br_netfilter

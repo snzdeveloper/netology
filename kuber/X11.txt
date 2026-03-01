@@ -1,0 +1,21 @@
+xauth list | while read LINE; do sudo xauth add ; done
+
+
+When using sudo or switching to root
+The primary cause is that the root user does not have access to the original user's X11 authorization cookie. 
+Use sudo su -: This command can sometimes properly set up the environment for running GUI apps as root.
+Transfer the Xauthority cookie: A reliable fix is to share the non-root user's cookie with the root user.
+Log in as your normal user with X11 forwarding enabled (ssh -X user@host).
+Get the authorization key for your current display:
+bash
+xauth list
+Switch to the root user (e.g., sudo su or su -) and add the key you just listed (replace the example with your actual output):
+bash
+# As root
+xauth add <display_name> <protocol> <magic_cookie>
+# Example: xauth add debianLap/unix:11 MIT-MAGIC-COOKIE-1 b9f75d9a77aa37a47e9982a9a0c6144c
+Alternatively, a single command can automate this process:
+bash
+xauth list | while read LINE; do sudo xauth add $LINE; done
+ 
+

@@ -1,0 +1,7 @@
+- name: Disable SELinux
+  ansible.builtin.command: setenforce 0
+  when: ansible_os_family == "RedHat"
+- name: Ensure SELinux is persistently disabled
+  ansible.posix.selinux:
+    state: disabled
+    policy: targeted

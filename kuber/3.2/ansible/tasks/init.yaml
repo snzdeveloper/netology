@@ -1,0 +1,5 @@
+- name: Initialize the Kubernetes cluster
+  ansible.builtin.command: kubeadm init --pod-network-cidr=10.244.0.0/16 # Example using Flannel CIDR
+  register: kubeinit_output
+  # Only run this on the first master node
+  when: inventory_hostname == groups['master'][0]

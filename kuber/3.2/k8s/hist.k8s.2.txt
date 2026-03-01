@@ -1,0 +1,449 @@
+    1  ls -al /etc/yum.conf 
+    2  sudo dnf install kernel-devel
+    3  sudo dnf config-manager --add-repo
+    4  sudo mkdir -p /opt/shares/rocky
+    5  sudo mount /dev/sr0 /opt/shares/rocky
+    6  ls -al /opt/shares/rocky/
+    7  sudo dnf config-manager --add-repo /opt/shares/rocky
+    8  sudo dnf update
+    9  cat /opt/shares/rocky/media.repo 
+   10  ls -al /etc/yum.repos.d/opt_shares_rocky.repo 
+   11  vim /etc/yum.repos.d/opt_shares_rocky.repo 
+   12  sudo vim /etc/yum.repos.d/opt_shares_rocky.repo 
+   13  sudo dnf update
+   14  sudo vim /etc/yum.repos.d/opt_shares_rocky.repo 
+   15  sudo vim /etc/yum.repos.d/rocky.repo 
+   16  sudo vim /etc/yum.repos.d/opt_shares_rocky.repo 
+   17  sudo dnf update
+   18  sudo dnf search kernel
+   19  sudo dnf repolist
+   20  sudo dnf config-manager --disablerepo extras 
+   21  sudo dnf config-manager --disablerepo extras --disable
+   22  sudo dnf config-manager --disablerepo extras
+   23  sudo dnf config-manager --disablerepo extras --save
+   24  sudo dnf repolist
+   25  sudo vim /etc/yum.repos.d/rocky-extras.repo 
+   26  sudo dnf repolist
+   27  sudo dnf search kernel
+   28  sudo dnf search kernel-dev
+   29  sudo dnf install kernel-dev -y
+   30  sudo dnf install kernel-dev
+   31  sudo dnf install kernel-devel-matched-5.14.0-503.14.1.el9_5.x86_64 
+   32  sudo dnf search ntfs
+   33  sudo dnf search ntfs-3g
+   34  sudo dnf search 3g
+   35  sudo dnf search kernel-dev
+   36  sudo dnf search net
+   37  sudo umount /opt/shares/rocky
+   38  lsblk
+   39  sudo umount /dev/sr0
+   40  lsblk
+   41  sudo reboot
+   42  sudo mkdir /opt/shares/iso
+   43  sudo mount -t vboxsf isos /opt/shares/iso
+   44  sudo mount.vboxsf isos /opt/shares/iso
+   45  sudo poweroff
+   46  sudo dmesg
+   47  sudo mount.vboxsf isos /opt/shares/iso
+   48  sudo mount.vboxsf iso /opt/shares/iso
+   49  sudo mount.vboxsf ISO /opt/shares/iso
+   50  sudo systemctl list-units 
+   51  sudo systemctl list-units | grep virtual
+   52  sudo systemctl list-units | grep box
+   53  systemctl status vboxadd.service 
+   54  lsblk 
+   55  sudo /run/media/user/VBox_GAs_7.0.18/VBoxLinuxAdditions.run 
+   56  sudo dmesg 
+   57  sudo semanage --help
+   58  vim /etc/selinux/config 
+   59  sudo vim /etc/selinux/config 
+   60  sudo grubby --update-kernel ALL --args selinux=0
+   61  sudo reboot
+   62  sudo systemctl status vboxadd
+   63  sudo dmesg 
+   64  sudo dmesg | grep vbox
+   65  sudo dmesg | grep box
+   66  sudo dmesg | grep virt
+   67  sudo systemctl status vboxadd
+   68  sudo systemctl restart vboxadd
+   69  sudo journalctl -xeu vboxadd.service
+   70  sudo systemctl restart vboxadd
+   71  sudo semanage --help
+   72  cat /var/log/vboxadd-install.log 
+   73  sudo cat /var/log/vboxadd-install.log 
+   74  sudo cat /var/log/vboxadd-setup.log
+   75  journalctl -xeu vboxadd.service
+   76  sudo dnf groupinstall "Development Tools"
+   77  sudo mount /dev/sr0 /opt/shares/rocky
+   78  sudo dnf groupinstall "Development Tools"
+   79  ls /opt/shares/rocky/
+   80  sudo mount /dev/sr0 /opt/shares/rocky
+   81  sudo umount /dev/sr0 
+   82  sudo mount /dev/sr0 /opt/shares/rocky
+   83  ls /opt/shares/rocky/
+   84  sudo dnf groupinstall "Development Tools"
+   85  sudo dnf install kernel-devel elfutils-libelf-devel -y
+   86  sudo dnf install kernel-devel elfutils-libelf-devel
+   87  sudo umount /dev/sr0 
+   88  sudo /run/media/user/VBox_GAs_7.0.18/VBoxLinuxAdditions.run 
+   89  sudo umount /dev/sr0 
+   90  lsblk
+   91  sudo umount /dev/sr0 
+   92  sudo mount /dev/sr0 /opt/shares/rocky
+   93  ls /opt/shares/rocky/
+   94  sudo yum search module
+   95  sudo dnf install environment-modules
+   96  module --version
+   97  bash
+   98  module --version
+   99  module avail
+  100  ls -al /etc/yum.conf 
+  101  find /opt/shares/rocky/ -name 'epel*'
+  102  sudo poweroff
+  103  ip a
+  104  sudo poweroff
+  105  ip a
+  106  sudo vim /etc/dnf/dnf.conf 
+  107  sudo dnf update
+  108  sudo dnf search epel
+  109  sudo poweroff
+  110  sudo dnf search epel
+  111  sudo vim /etc/dnf/dnf.conf 
+  112  ping 46.45.53.9
+  113  export http_proxy=http://46.45.53.9:3128/
+  114  wget -O- http://ya.ru
+  115  export https_proxy=http://46.45.53.9:3128/
+  116  wget -O- http://ya.ru
+  117  sudo dnf update
+  118  sudo dnf search glibc
+  119  sudo dnf install -y yum-utils createrepo
+  120  sudo mount /dev/sr0 /opt/shares/rocky
+  121  sudo dnf install -y yum-utils createrepo
+  122  sudo dnf repolist 
+  123  sudo dnf repolist --all
+  124  sudo dnf config-manager --set-enabled crb
+  125  sudo dnf repolist 
+  126  sudo dnf update
+  127  sudo poweroff
+  128  mc
+  129  sudo dnf search ntfs3
+  130  sudo dnf update
+  131  sudo dnf search ntfs
+  132  sudo dnf search 
+  133  sudo dnf repolist 
+  134  sudo dnf config-manager --set-enabled baseos
+  135  sudo dnf search epel
+  136  sudo dnf config-manager --set-disabled opt_shares_rocky_appstream
+  137  sudo dnf config-manager --set-disabled opt_shares_rocky_baseos
+  138  sudo dnf config-manager --set-enabled appstream
+  139  sudo dnf search epel
+  140  sudo dnf avail
+  141  sudo dnf listrepo
+  142  sudo dnf repolist
+  143  sudo dnf search gcc
+  144  sudo dnf search libstd
+  145  sudo dnf search ntfs
+  146  lsblk
+  147  mkdir /run/media/user/Ventoy/rocky
+  148  sudo dnf search epel
+  149  sudo dnf search epel-release
+  150  sudo repotrack --downloaddir=/run/media/user/Ventoy/rocky libstdc++-static
+  151  sudo repotrack --downloaddir=/run/media/user/Ventoy/rocky libstdc++-devel
+  152  ls -al /run/media/user/Ventoy/rocky
+  153  createrepo 
+  154  mkdir repo && cd repo
+  155  createrepo /run/media/user/Ventoy/rocky
+  156  ls -al /run/media/user/Ventoy/rocky
+  157  dnf download --resolve --alldeps --destdir=/run/media/user/Ventoy/rocky gcc
+  158  dnf download --resolve --alldeps --destdir=/run/media/user/Ventoy/rocky libstdc++-static
+  159  dnf download --resolve --alldeps --destdir=/run/media/user/Ventoy/rocky libstdc++-static-11.5.0-2
+  160  dnf download --resolve --alldeps --destdir=/run/media/user/Ventoy/rocky libstdc++-static-11.5.0-2.el9_5
+  161  dnf searchlibstdc++-static
+  162  dnf search libstdc++
+  163  dnf search libstdc++-static
+  164  dnf search libstdc++-static --versions
+  165  dnf search libstdc++-static --all
+  166  dnf download --resolve --alldeps --destdir=/run/media/user/Ventoy/rocky libstdc++-static
+  167  dnf download --resolve --alldeps --destdir=/run/media/user/Ventoy/rocky gcc
+  168  createrepo /run/media/user/Ventoy/rocky
+  169  dnf download --resolve --alldeps --destdir=/run/media/user/Ventoy/rocky gcc-devel
+  170  dnf search gcc --all
+  171  dnf download --resolve --alldeps --destdir=/run/media/user/Ventoy/rocky gcc-c++
+  172  dnf download --resolve --alldeps --destdir=/run/media/user/Ventoy/rocky gcc-gfortran
+  173  dnf download --resolve --alldeps --destdir=/run/media/user/Ventoy/rocky libstdc++-devel
+  174  dnf download --resolve --alldeps --destdir=/run/media/user/Ventoy/rocky libstdc++-static
+  175  dnf download --resolve --alldeps --destdir=/run/media/user/Ventoy/rocky gcc
+  176  createrepo /run/media/user/Ventoy/rocky
+  177  sudo dnf repoadd /run/media/user/Ventoy/rocky
+  178  sudo dnf config-manager repoadd /run/media/user/Ventoy/rocky
+  179  sudo dnf config-manager --add-repo /run/media/user/Ventoy/rocky
+  180  sudo vim /etc/yum.repos.d/run_media_user_Ventoy_rocky.repo 
+  181  sudo dnf search --repo run_media_user_Ventoy_rocky gcc
+  182  sudo dnf repolist
+  183  sudo dnf search --disable baseos --disable appstream --disable crb --repo run_media_user_Ventoy_rocky gcc
+  184  sudo dnf config-manager --disable appstream baseos crb
+  185  sudo dnf search --repo run_media_user_Ventoy_rocky gcc
+  186  sudo dnf repolist
+  187  sudo dnf search --repo run_media_user_Ventoy_rocky gcc
+  188  sudo dnf update --repo run_media_user_Ventoy_rocky gcc
+  189  sudo dnf search --repo run_media_user_Ventoy_rocky gcc
+  190  sudo reboot
+  191  sudo dnf search --repo run_media_user_Ventoy_rocky gcc
+  192  sudo dnf clean all
+  193  sudo dnf update
+  194  sudo dnf config-manager --enable appstream baseos crb
+  195  dnf download --resolve --alldeps --destdir=/run/media/user/Ventoy/rocky gcc 
+  196  dnf download --resolve --alldeps --destdir=/run/media/user/Ventoy/rocky libstd
+  197  dnf searchlibstd
+  198  dnf search libstd
+  199  sudo dnf search libstd
+  200  createrepo /run/media/user/Ventoy/rocky
+  201  sudo dnf search libstd
+  202  dnf download --resolve --alldeps --destdir=/run/media/user/Ventoy/rocky gcc libstdc++-static
+  203  sudo dnf search libstd
+  204  dnf download --resolve --alldeps --destdir=/run/media/user/Ventoy/rocky gcc libstdc++-static libstdc++-devel
+  205  sudo dnf search gcc
+  206  dnf download --resolve --alldeps --destdir=/run/media/user/Ventoy/rocky gcc libstdc++-static libstdc++-devel gcc-gfortran
+  207  sudo dnf search gcc
+  208  dnf download --resolve --alldeps --destdir=/run/media/user/Ventoy/rocky gcc libstdc++-static libstdc++-devel gcc-gfortran gcc-c++
+  209  dnf download --resolve --alldeps --destdir=/run/media/user/Ventoy/rocky gcc libstdc++-static libstdc++-devel gcc-gfortran gcc-cpp
+  210  sudo dnf search gcc
+  211  dnf download --resolve --alldeps --destdir=/run/media/user/Ventoy/rocky gcc libstdc++-static libstdc++-devel gcc-gfortran libgcc
+  212  createrepo /run/media/user/Ventoy/rocky
+  213  sudo dnf config-manager --disable appstream baseos crb
+  214  sudo dnf clear all
+  215  sudo dnf clean all
+  216  sudo dnf search gcc
+  217  sudo poweroff
+  218  y
+  219  mc
+  220  dnf update
+  221  sudo dnf update
+  222  sudo dnf repomanage --enablerepo baseos appstream crb
+  223  sudo dnf repomanage --enablerepo baseos
+  224  sudo dnf repomanage --repo baseos --enable
+  225  sudo dnf repomanage --set-enabled baseos appstream crb
+  226  sudo dnf repomanage --enable baseos appstream crb
+  227  sudo dnf config-manager --enable baseos appstream crb
+  228  sudo dnf update
+  229  sudo dnf upgrade
+  230  sudo dnf config-manager --disable run_media_user_Ventoy_rocky
+  231  sudo dnf update
+  232  sudo dnf upgrade
+  233  sudo reboot
+  234  uname -a
+  235  sudo ls -al /etc/
+  236  sudo cat /etc/os_release
+  237  sudo cat /etc/os_releases
+  238  sudo ls -al /etc | grep os_
+  239  sudo ls -al /etc | grep rele
+  240  sudo cat /etc/os-release 
+  241  ip a
+  242  sudo poweroff
+  243  ip a
+  244  sudo nmtui
+  245  ip a
+  246  sudo poweroff
+  247  ip a
+  248  sudo timedatectl list-timezones 
+  249  sudo timedatectl list-timezones | grep yeka
+  250  sudo timedatectl list-timezones | grep -i eka
+  251  sudo timedatectl set-timezone Asia/Yekaterinburg
+  252  sudo vim /etc/fstab
+  253  ls -al /opt/
+  254  ls -al /opt/shares/
+  255  ls -al /opt/shares/iso/
+  256  ls -al /opt/shares/rocky/
+  257  mount -a
+  258  sudo systemctl daemon-reload 
+  259  mount
+  260  mount -a
+  261  ls -al /opt/shares/iso/
+  262  ls -al /opt/shares/
+  263  sudo mount -a
+  264  sudo vim /etc/fstab
+  265  sudo systemctl daemon-reload 
+  266  sudo mount
+  267  ls -al /opt/shares/
+  268  sudo mount -a
+  269  ls -al /opt/shares/
+  270  sudo poweroff
+  271  sudo vim /etc/fstab
+  272  sudo systemctl daemon-reload 
+  273  sudo mount -a
+  274  ls -al /opt/shares/
+  275  lsof 
+  276  sudo poweroff
+  277  echo "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIP8Kjh2WHr1Fv1tdSGmYq3G5or9wrueUjO4VgU1xJeO3 slava@DESKTOP">>~/.ssh/authorized_keys
+  278  ls -al
+  279  mkdir -p ~/.ssh
+  280  echo "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIP8Kjh2WHr1Fv1tdSGmYq3G5or9wrueUjO4VgU1xJeO3 slava@DESKTOP">>~/.ssh/authorized_keys
+  281  ls -al ~/.ssh/
+  282  sudo rpm --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org
+  283  sudo dnf install https://www.elrepo.org/elrepo-release-9.el9.elrepo.noarch.rpm -y
+  284  sudo dnf --enablerepo=elrepo-kernel install kernel-lt mernel-lt-modules -y
+  285  sudo dnf --enablerepo=elrepo-kernel install kernel-lt kernel-lt-modules -y
+  286  ip s
+  287  ip a
+  288  sudo reboot
+  289  uname -r
+  290  sudo dnf update -y
+  291  visudo 
+  292  sudo visudo 
+  293  sudo dnf update -y
+  294  sudo vim /etc/yum.conf 
+  295  sudo dnf update -y
+  296  uname -r
+  297  /run/media/user/VBox_GAs_7.2.6/VBoxLinuxAdditions.run 
+  298  sudo /run/media/user/VBox_GAs_7.2.6/VBoxLinuxAdditions.run 
+  299  uname -r
+  300  ls /usr/lib/modules
+  301  ls /usr/lib/modules/6.1.162-1.el9.elrepo.x86_64/
+  302  sudo /run/media/user/VBox_GAs_7.2.6/VBoxLinuxAdditions.run 
+  303  sudo dnf --enablerepo=elrepo-kernel install kernel-lt-devel
+  304  sudo dnf --enablerepo=elrepo-kernel install kernel-lt-headers
+  305  sudo dnf --enablerepo=elrepo-kernel install kernel-lt-modules
+  306  sudo /run/media/user/VBox_GAs_7.2.6/VBoxLinuxAdditions.run 
+  307  sudo dnf remove kernel-headers
+  308  sudo dnf --enablerepo=elrepo-kernel install kernel-lt-headers
+  309  sudo /run/media/user/VBox_GAs_7.2.6/VBoxLinuxAdditions.run 
+  310  sudo dnf --enablerepo=elrepo-kernel install kernel-lt-devel
+  311  sudo dnf --enablerepo=elrepo-kernel install kernel-headers
+  312  sudo dnf --enablerepo=elrepo-kernel install kernel-headers -y
+  313  sudo dnf install kernel-headers -y
+  314  sudo /run/media/user/VBox_GAs_7.2.6/VBoxLinuxAdditions.run 
+  315  sudo dnf remove kernel-lt-headers-6.1.162-1.el9.elrepo.x86_64 
+  316  sudo dnf --enablerepo=elrepo-kernel install kernel-lt-devel
+  317  sudo /run/media/user/VBox_GAs_7.2.6/VBoxLinuxAdditions.run 
+  318  sudo poweroff
+  319  echo 1 | sudo tee /proc/sys/net/ipv4/ip_forward
+  320  sudo sed -i s/'^#net.ipv4.ip_forward=1'/'net.ipv4.ip_forward=1'/g /etc/sysctl.conf
+  321  sysctl -p
+  322  cat <<EOF | sudo tee /etc/modules-load.d/k8s.conf
+  323  overlay
+  324  br_netfilter
+  325  EOF
+  326  modprobe overlay
+  327  modprobe br_netfilter
+  328  sudo modprobe br_netfilter
+  329  sudo modprobe overlay
+  330  lsmod | grep br_netfilter
+  331  lsmod | grep overlay
+  332  echo -e "net.bridge.bridge-nf-call-ip6tables = 1\nnet.bridge.bridge-nf-call-iptables = 1\nnet.ipv4.ip_forward = 1" | sudo tee /etc/sysctl.d/10-k8s.conf
+  333  sudo sysctl -f /etc/sysctl.d/10-k8s.conf
+  334  sysctl net.bridge.bridge-nf-call-iptables net.bridge.bridge-nf-call-ip6tables net.ipv4.ip_forward
+  335  sudo swapoff -a
+  336  sudo sed -i '/ swap / s/^/#/' /etc/fstab
+  337  sudo swapoff -s
+  338  sudo swapon -s
+  339  sudo nmcli con mod enp0s9 ipv4.addresses "172.30.120.201/24" ipv4.method manual
+  340  ip a
+  341  sudo nmcli con mod enp0s9 ipv4.addresses "172.30.120.201/24" ipv4.method manual
+  342  nmcli connection 
+  343  nmcli connection sudo nmcli con add con-name "enp0s9" ifname enp0s9 type ethernet ip4 172.30.120.201/24
+  344  sudo nmcli connection sudo nmcli con add con-name "enp0s9" ifname enp0s9 type ethernet ip4 172.30.120.201/24
+  345  sudo nmcli con add con-name "enp0s9" ifname enp0s9 type ethernet ip4 172.30.120.201/24
+  346  sudo nmcli con mod enp0s9 ipv4.addresses "172.30.120.201/24" ipv4.method manual
+  347  sudo nmcli con up enp0s9
+  348  ip a
+  349  sudo nmcli con show 
+  350  cat <<EOF | sudo tee /etc/hosts
+  351  127.0.0.1       localhost
+  352  # The following lines are desirable for IPv6 capable hosts
+  353  ::1     localhost ip6-localhost ip6-loopback
+  354  ff02::1 ip6-allnodes
+  355  ff02::2 ip6-allrouters
+  356  # Cluster nodes
+  357  172.30.120.201 node1.internal
+  358  172.30.120.202 node2.internal
+  359  172.30.120.203 node3.internal
+  360  172.30.120.204 node4.internal
+  361  172.30.120.205 node5.internal
+  362  EOF
+  363  mkdir /tmp/containerd && wget https://github.com/containerd/containerd/releases/download/v2.2.1/containerd-2.2.1-linux-amd64.tar.gz -O /tmp/containerd && cd /tmp/containerd && tar xvf containerd-2.2.1-linux-amd64.tar.gz
+  364  mkdir /tmp/containerd && wget https://github.com/containerd/containerd/releases/download/v2.2.1/containerd-2.2.1-linux-amd64.tar.gz -O /tmp/containerd/ && cd /tmp/containerd && tar xvf containerd-2.2.1-linux-amd64.tar.gz
+  365  wget https://github.com/containerd/containerd/releases/download/v2.2.1/containerd-2.2.1-linux-amd64.tar.gz -O /tmp/containerd/ && cd /tmp/containerd && tar xvf containerd-2.2.1-linux-amd64.tar.gz
+  366  wget https://github.com/containerd/containerd/releases/download/v2.2.1/containerd-2.2.1-linux-amd64.tar.gz -O /tmp/containerd/containerd-2.2.1-linux-amd64.tar.gz && cd /tmp/containerd && tar xvf containerd-2.2.1-linux-amd64.tar.gz
+  367  systemctl stop containerd
+  368  sudo systemctl stop containerd
+  369  cd bin
+  370  yes | sudo cp -rf * /usr/bin
+  371  sudo systemctl start containerd
+  372  containerd --version
+  373  sudo mkdir /etc/containerd/
+  374  containerd config default | sudo tee /etc/containerd/config.toml
+  375  sudo sed -i 's/SystemdCgroup \= false/SystemdCgroup \= true/g' /etc/containerd/config.toml
+  376  wget https://raw.githubusercontent.com/containerd/containerd/main/containerd.service
+  377  sudo mv containerd.service /etc/systemd/system/
+  378  sudo systemctl start containerd
+  379  wget https://github.com/opencontainers/runc/releases/download/v1.4.0/runc.amd64
+  380  sudo install -m 755 runc.amd64 /usr/local/sbin/runc
+  381  rm runc.amd64
+  382  sudo systemctl start containerd
+  383  journalctl -xeu containerd.service
+  384  ls -al /usr/
+  385  ls -al /usr/local/
+  386  wget https://raw.githubusercontent.com/containerd/containerd/main/containerd.service
+  387  cat containerd.service 
+  388  yes | sudo cp -rf * /usr/local/bin
+  389  ls
+  390  sudo systemctl start containerd
+  391  sudo systemctl status containerd
+  392  containerd --version
+  393  sudo systemctl daemon-reload
+  394  sudo systemctl enable --now containerd
+  395  cat << _EOF | sudo tee /etc/crictl.yaml
+  396  runtime-endpoint: unix:///var/run/containerd/containerd.sock
+  397  _EOF
+  398  sudo crictl --runtime-endpoint unix:///var/run/containerd/containerd.sock version
+  399  sudo setenforce 0
+  400  sudo sed -i 's/^SELINUX=enforcing$/SELINUX=permissive/' /etc/selinux/config
+  401  cat <<EOF | sudo tee /etc/yum.repos.d/kubernetes.repo
+  402  [kubernetes]
+  403  name=Kubernetes
+  404  baseurl=https://pkgs.k8s.io/core:/stable:/v1.35/rpm/
+  405  enabled=1
+  406  gpgcheck=1
+  407  gpgkey=https://pkgs.k8s.io/core:/stable:/v1.35/rpm/repodata/repomd.xml.key
+  408  exclude=kubelet kubeadm kubectl cri-tools kubernetes-cni
+  409  EOF
+  410  sudo dnf install -y --disablerepo=* --enablerepo=kubernetes kubelet kubeadm kubectl --setopt=disable_excludes=kubernetes
+  411  sudo systemctl enable --now kubelet
+  412  sudo kubeadm init --help
+  413  sudo kubeadm init --pod-network-cidr=172.16.0.0/12 --control-plane-endpoint "172.30.120.201:6443" --apiserver-advertise-address=172.30.120.201 --upload-certs
+  414  sudo poweroff
+  415  sudo kubeadm init --pod-network-cidr=172.16.0.0/12 --control-plane-endpoint "172.30.120.201:6443" --apiserver-advertise-address=172.30.120.201 --upload-certs
+  416  mkdir -p $HOME/.kube
+  417    sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+  418    sudo chown $(id -u):$(id -g) $HOME/.kube/config
+  419  echo "source <(kubectl completion bash)"
+  420  echo "source <(kubectl completion bash)" >>.bashrc 
+  421  kubectl get nodes 
+  422  kubectl describe nodes 
+  423  curl https://raw.githubusercontent.com/projectcalico/calico/v3.31.3/manifests/calico.yaml -O
+  424  kubectl apply -f calico.yaml
+  425  curl https://raw.githubusercontent.com/projectcalico/calico/v3.31.3/manifests/tigera-operator.yaml -O
+  426  kubectl apply -f tigera-operator.yaml 
+  427  curl https://raw.githubusercontent.com/projectcalico/calico/v3.31.3/manifests/custom-resources.yaml -O
+  428  cat -e 192. custom-resources.yaml 
+  429  sed -i 's-192.168.0.0/16-172.16.0.0/12-g'
+  430  sed -i 's-192.168.0.0/16-172.16.0.0/12-g' custom-resources.yaml 
+  431  cat -e 192. custom-resources.yaml 
+  432  kubectl apply -f custom-resources.yaml 
+  433  kubectl get nodes 
+  434  kubectl describe nodes 
+  435  kubectl get pods --all-namespaces 
+  436  watch kubectl get pods --all-namespaces 
+  437  sudo poweroff
+  438  history 
+  439  sudo vim /etc/fstab 
+  440  ls -al /mnt/
+  441  mkdir /mnt/shares
+  442  sudo mkdir /mnt/shares
+  443  mount -a
+  444  systemctl daemon-reload
+  445  mount -a
+  446  sudo mount -a
+  447  ls /mnt/
+  448  ls /mnt/shares/
+  449  history >/mnt/shares/hist.k8s.2.txt
