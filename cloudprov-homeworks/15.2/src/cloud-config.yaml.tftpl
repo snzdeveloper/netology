@@ -1,0 +1,31 @@
+#cloud-config
+datasource:
+  Ec2:
+    strict_id: false
+ssh_pwauth: no
+users:
+- name: user
+  sudo: 'ALL=(ALL) NOPASSWD:ALL'
+  shell: /bin/bash
+  ssh_authorized_keys:
+  %{~ for i in ssh_keys ~}
+  - "${i}"
+  %{~ endfor ~}
+write_files:
+  - path: "/var/www/html/index.html"
+    permissions: "755"
+    content: |
+      <!DOCTYPE html>
+      <html lang="en">
+      <head>
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>Document</title>
+      </head>
+      <body>
+          <h1>Hello world !!!</h1>
+          <img src="${img}"/>
+      </body>
+      </html>
+
+    defer: true
